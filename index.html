@@ -853,7 +853,7 @@ var goalEdit=false;
 function renderGoals(){const g=store.goals;let h='';
   g.forEach((x,i)=>{const p=pct(x.s,x.t);h+=`<div class="goal"><div class="bud-h"><span><b>${esc(x.n)}</b></span><span>${fmt(x.s)} / ${fmt(x.t)} lei · ${p}%</span></div><div class="bar"><i style="width:${Math.min(100,p)}%;background:linear-gradient(90deg,#3b82f6,#22c55e)"></i></div>
    ${goalEdit?`<div class="g-a"><button class="gdel" data-gd="${i}">Șterge obiectivul</button></div>`:`<div class="g-a"><input data-gi="${i}" inputmode="decimal" placeholder="sumă"><button data-ga="${i}">+ Adaugă</button><button data-gm="${i}" class="g2">− Scoate</button></div>`}</div>`});
-  if(!g.length&&!goalEdit)h+=`<div class="shint">Ex: capital trading 20.000 lei, vacanță, fond de urgență.</div>`;
+  if(!g.length&&!goalEdit)h+=`<div class="shint">Ex: fond de urgență, vacanță, mașină.</div>`;
   if(goalEdit)h+=`<div class="g-a"><input id="gN" placeholder="Nume obiectiv"><input id="gT" inputmode="decimal" placeholder="Țintă lei" style="max-width:100px"><button id="gAdd">+</button></div>`;
   h+=`<button class="lnk" id="gEd">${goalEdit?'Gata':g.length?'Editează':'+ Obiectiv nou'}</button>`;
   $('goals').innerHTML=h}
@@ -1193,6 +1193,32 @@ $('fs').addEventListener('keydown',e=>{if(e.key==='Enter'&&hasOp($('fs').value))
 // ---- render hook ----
 const _r5=render;render=function(){_r5();try{renderHome();renderEve();renderYoY()}catch(err){console.error(err)}};
 applyLook();render();
+
+// ================= v6: fixed costs with schedule + no trading =================
+delete CATS["Trading & prop"];
+function renderTrading(){$('trading').innerHTML=''}
+function fAct(f,k){return (!f.from||k>=f.from)&&(!f.until||k<=f.until)}
+function fAmt(f,k){return f.over&&f.over[k]!=null?+f.over[k]:+f.s}
+if(!store.mig6){fixed.forEach(f=>{const n=f.n.toLowerCase();
+  if(n.includes('avantaj')){f.s=196.08;f.over={'2026-12':385};f.from='2026-12';f.until='2028-08'}
+  if(n==='tbi'||n.includes('transilvania')){f.from=f.from||'2026-12';f.until=f.until||'2031-11'}});
+  store.mig6=1;save()}
+function fixedDue(){const cm=mKey(today());return fixed.reduce((a,f)=>a+((fAct(f,cm)&&fAmt(f,cm)>0&&!fixPaid(f).length)?fAmt(f,cm):0),0)}
+function payFixed(i){const f=fixed[i],a=fAmt(f,mKey(today()));openSheet();$('fs').value=a>0?a:'';$('ft').value=f.n;fCat=f.c;catTouched=true;drawPick();drawSugg();check()}
+function renderFixed(ev){const cm=mKey(today());
+  const tot=fixed.reduce((a,f)=>a+(fAct(f,cm)?fAmt(f,cm)||0:0),0);
+  let h=`<div class="hd"><b>📌 Cheltuieli fixe</b><span>${fmt(tot)} lei luna asta</span><button id="fxEdit">${fixEdit?'Gata':'Editează'}</button></div>`;
+  let due=0;const ml=k=>LUNI[+k.slice(5)-1].slice(0,3).toLowerCase()+' '+k.slice(0,4);
+  fixed.forEach((f,i)=>{const k=CATS[f.c]||CATS.Diverse;
+    if(fixEdit){h+=`<div class="fr"><input class="n" data-fn="${i}" value="${esc(f.n)}"><input class="a" data-fa="${i}" inputmode="decimal" value="${f.s}"><select data-fc="${i}">${['Rate & credite','Facturi & abonamente','Transport & mașină'].map(c=>`<option ${c===f.c?'selected':''}>${c}</option>`).join('')}</select><button class="del" data-fd="${i}">×</button></div>`;return}
+    const act=fAct(f,cm),a=fAmt(f,cm),p=fixPaid(f),ps=sum(p),vr=!(a>0);
+    const note=!act?(f.from&&cm<f.from?`din ${ml(f.from)}`:'încheiat'):f.until?`până în ${ml(f.until)}`:'';
+    if(act&&!p.length&&!vr)due+=a;
+    h+=`<div class="fr" style="${act?'':'opacity:.5'}"><div class="ic" style="background:${tint(k.c,.22)}">${k.e}</div><div class="nm">${esc(f.n)}${note?`<div style="font-size:11px;color:var(--mut);font-weight:500">${note}</div>`:''}</div><div class="am">${vr?'variabil':fmt(a)}</div>${!act?'':vr?`<button class="st ${p.length?'ok':'due'}" data-fp="${i}" style="cursor:pointer">${p.length?'✓ '+fmt(ps)+' · +':'Adaugă'}</button>`:p.length?`<span class="st ok">✓ ${fmt(ps)}</span>`:`<button class="st due" data-fp="${i}">Plătește</button>`}</div>`});
+  if(fixEdit)h+=`<div class="fr"><input class="n" id="nfN" placeholder="Nume (ex: Întreținere)"><input class="a" id="nfA" inputmode="decimal" placeholder="lei"><select id="nfC"><option>Facturi & abonamente</option><option>Rate & credite</option><option>Transport & mașină</option></select><button class="st due" id="nfAdd">+</button></div>`;
+  else h+=`<div class="fsum"><span>Rămas de plătit în ${LUNI[new Date().getMonth()].toLowerCase()}: <b>${fmt(due)} lei</b></span>${ev==null?'':`<span>Disponibil după fixe: <b>≈ ${fmt(ev-due)} lei</b></span>`}</div>`;
+  $('fixed').innerHTML=h}
+render();
 
 </script>
 </body>
