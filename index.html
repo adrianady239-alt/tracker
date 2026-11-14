@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bani">
-<meta name="theme-color" content="#0b141a">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
@@ -307,20 +307,150 @@ body.t-home .fab2{display:block}
 .lk-f{border:0;border-radius:16px;padding:14px 22px;font:inherit;font-size:16px;font-weight:700;background:color-mix(in srgb,var(--tx) 12%,transparent);color:var(--tx);cursor:pointer}
 .lock.nopin .lk-d,.lock.nopin .lk-k{display:none}
 
+/* ================= v5 Liquid Glass ================= */
+:root{--ac:#5fe39a;--ac2:#2fbf71;--ac3:#14804a;--acd:#04220f;--pos:#5fe39a;--neg:#ff8f80;--tx:#f5f5f3;--mut:rgba(245,245,243,.62);--line:rgba(255,255,255,.1);--card:rgba(20,20,20,.45);--dim:.45}
+body.acc-alb{--ac:#f2f2f2;--ac2:#d4d4d4;--ac3:#8a8a8a;--acd:#0a0a0a}
+html{background:#0a0a0a}
+body{background:transparent!important;color:var(--tx)!important;font-family:-apple-system,"SF Pro Text","Inter",system-ui,sans-serif!important;font-weight:500}
+#wpbg{position:fixed;inset:0;z-index:-2;background:radial-gradient(70% 45% at 85% 0%,rgba(95,227,154,.16),transparent 70%),radial-gradient(60% 40% at 0% 100%,rgba(120,120,140,.22),transparent 70%),linear-gradient(170deg,#1b1c1e,#0b0b0c 60%);background-size:cover;background-position:center}
+#wpdim{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,calc(var(--dim) + .08)),rgba(0,0,0,calc(var(--dim) - .12)) 45%,rgba(0,0,0,calc(var(--dim) + .12)))}
+body:not(.haswp) #wpdim{background:none}
+.wrap{padding:0 16px calc(130px + env(safe-area-inset-bottom))!important}
+/* glass recipe */
+.g,.card,.fx,.inv,.warn,.cat,.srch input,.sbtn,.tbar,.chip,.rep .kpi div{
+ position:relative;border:1px solid transparent!important;
+ background:linear-gradient(160deg,rgba(26,26,26,.38),rgba(12,12,12,.46) 55%,rgba(30,30,30,.38)) padding-box,
+  linear-gradient(150deg,rgba(255,255,255,.48),rgba(255,255,255,.06) 30%,rgba(255,255,255,.02) 60%,rgba(255,255,255,.26)) border-box!important;
+ -webkit-backdrop-filter:blur(16px) saturate(150%) brightness(.88);backdrop-filter:blur(16px) saturate(150%) brightness(.88);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.22),inset 0 -10px 22px -14px rgba(0,0,0,.4),0 14px 34px -14px rgba(0,0,0,.6)!important;color:var(--tx)}
+.card,.fx,.inv,.warn,.rep{border-radius:26px!important}
+.g{border-radius:26px}
+.cap{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+h2{font-size:15px!important;font-weight:700!important;margin:22px 4px 10px!important;color:var(--tx)}
+/* header */
+.hhd{display:flex;align-items:center;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top)) 2px 2px}
+.hhd h1{margin:0;font-size:34px;font-weight:800;letter-spacing:-.03em}
+.hsub{font-size:13.5px;color:var(--mut);margin-top:2px}.hsub b{color:var(--ac);font-weight:600}
+.hbtns{display:flex;gap:8px}
+.cb{width:44px;height:44px;border-radius:50%!important;display:grid;place-items:center;padding:0;cursor:pointer}
+.cb svg{width:20px;height:20px;fill:none;stroke:var(--tx);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+body.hideamt #eyeBtn{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.12)) padding-box,linear-gradient(#fff,#fff) border-box!important}
+.phead{position:relative!important;background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;margin:0!important;padding:calc(12px + env(safe-area-inset-top)) 2px 6px!important}
+.phead h1{font-size:34px!important;font-weight:800!important}
+#t-home>.hero,.mslot[data-slot=home]{display:none!important}
+/* hero */
+.hero2{padding:18px 18px 14px;margin-top:14px}
+.big2{font-size:56px;font-weight:600;line-height:1.05;margin:6px 0 2px;background:linear-gradient(180deg,#fff 25%,color-mix(in srgb,var(--ac) 70%,#fff));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.045em}
+.big2 small{font-size:19px;font-weight:600;letter-spacing:0;-webkit-text-fill-color:var(--mut);margin-left:6px}
+.spark{display:block;width:100%;height:56px;margin:8px 0 12px}.spark .sline{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--ac) 60%,transparent))}
+.pills2{display:flex;gap:7px;flex-wrap:wrap}.pills2 span{font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:99px!important}
+/* quick actions */
+.qacts{display:flex;gap:8px;margin-top:12px}
+.qacts button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:99px!important;color:var(--tx);font:inherit;font-size:13px;font-weight:700;cursor:pointer;padding:0 8px;width:auto!important;flex-direction:row!important}
+.qacts i{font-style:normal;font-size:15px;width:auto!important;height:auto!important;background:none!important;border:0!important;box-shadow:none!important;display:inline!important}
+/* bento */
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.bento .t{padding:14px 14px 13px;min-height:122px;cursor:default}
+.bento .v{font-size:26px;font-weight:700;margin-top:6px}.bento .u{font-size:13px;color:var(--mut);letter-spacing:0;font-weight:600}
+.tsub{font-size:12px;color:var(--mut);margin-top:3px;font-weight:600}.tsub2{font-size:11px;color:var(--mut);margin-top:3px;opacity:.85}
+.tsub b,.tsub2 b{color:var(--tx)}
+.ring{position:absolute;right:12px;top:12px;width:44px;height:44px}.ring text{font-size:9.5px;font-weight:800;fill:var(--tx)}
+.hm{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px}
+.hm i{aspect-ratio:1;border-radius:5px;display:block;cursor:pointer}
+.hm .e{visibility:hidden}.hm .lf{border:1px dashed rgba(255,255,255,.14);cursor:default}
+.hm .l0{background:rgba(255,255,255,.07)}.hm .l1{background:color-mix(in srgb,var(--ac) 28%,transparent)}.hm .l2{background:color-mix(in srgb,var(--ac) 52%,transparent)}
+.hm .l3{background:color-mix(in srgb,var(--ac) 85%,transparent);box-shadow:0 0 8px color-mix(in srgb,var(--ac) 55%,transparent)}
+.hm .l4{background:rgba(255,143,128,.7)}.hm .l5{background:#ff6f5e;box-shadow:0 0 10px #ff6f5e}
+.hm .td{outline:1.5px solid #fff;outline-offset:1px}
+.alert{cursor:pointer!important;background:linear-gradient(160deg,rgba(60,22,18,.42),rgba(20,10,10,.5)) padding-box,linear-gradient(150deg,rgba(255,180,160,.6),rgba(255,255,255,.05) 40%,rgba(255,143,128,.4)) border-box!important}
+.alert .cap{color:#ffb3a8}.un-t{font-size:18px;font-weight:700;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.un-v{font-size:26px;font-weight:700;color:var(--neg)}
+.eve{display:flex;align-items:center;gap:8px;padding:10px 12px;margin-top:12px;border-radius:20px!important;font-weight:700;font-size:14px}
+.eve span{flex:1}.eve button{border:0;border-radius:99px;padding:8px 12px;font:inherit;font-size:12.5px;font-weight:700;background:var(--ac);color:var(--acd);cursor:pointer}
+.eve button.g2{background:rgba(255,255,255,.12);color:var(--tx)}
+/* dock + fab */
+.tbar{position:fixed!important;left:16px!important;right:90px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;height:64px;border-radius:99px!important;padding:0 6px!important;align-items:center!important;border-top:0!important}
+.tbar button{padding:7px 4px!important;border-radius:99px;font-size:10.5px!important;font-weight:700!important;color:var(--mut)!important}
+.tbar button.on{color:var(--ac)!important;background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 20%,transparent),color-mix(in srgb,var(--ac) 7%,transparent));box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
+.tbar svg{stroke-width:2.1!important}
+.fabx{position:fixed;z-index:8;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));width:64px;height:64px;border-radius:50%!important;display:grid;place-items:center;cursor:pointer;padding:0;
+ background:radial-gradient(80% 80% at 30% 20%,color-mix(in srgb,var(--ac) 40%,#fff),var(--ac2) 55%,var(--ac3)) padding-box,linear-gradient(150deg,#fff,rgba(255,255,255,.1) 50%,var(--ac)) border-box!important;
+ box-shadow:0 10px 30px color-mix(in srgb,var(--ac2) 50%,transparent),inset 0 1px 1px rgba(255,255,255,.7)!important}
+.fabx svg{width:26px;height:26px;stroke:var(--acd);stroke-width:2.6;stroke-linecap:round;fill:none}
+.fabx:active{transform:scale(.94)}
+/* lists & tiles */
+.row{background:rgba(16,16,16,.52)!important;border:1px solid rgba(255,255,255,.07);border-radius:18px!important}
+.row .ic{border-radius:50%!important}
+.day{color:var(--tx)!important;opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.chip{color:var(--mut)!important;border-radius:99px!important}
+.chip.on{background:var(--ac)!important;color:var(--acd)!important;border-color:var(--ac)!important}
+.cat{border-radius:22px!important}
+.srch input{border-radius:16px!important;color:var(--tx)}
+.sbtn{border-radius:16px!important}
+.shint{color:var(--mut)!important}
+.wallet button,.fixed .hd button{color:var(--ac)!important}
+.wallet button{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.12)!important}
+.fx label,.inv .xl{background:rgba(0,0,0,.35)!important}
+.fr .st.due{background:var(--ac)!important;color:var(--acd)!important}
+.fr .st.ok{background:color-mix(in srgb,var(--ac) 18%,transparent)!important;color:var(--ac)!important}
+.months .t i{background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 40%,transparent),var(--ac))!important}
+.bar i[style*="#3b82f6"]{background:linear-gradient(90deg,var(--ac3),var(--ac))!important;box-shadow:0 0 10px color-mix(in srgb,var(--ac) 60%,transparent)}
+.g-a button{background:var(--ac)!important;color:var(--acd)!important}.g-a button.g2{background:rgba(255,255,255,.1)!important;color:var(--tx)!important}.g-a .gdel{background:none!important;color:#f87171!important}
+.lnk{color:var(--ac)!important}
+.yy{display:flex;gap:10px}.yy .g{flex:1;padding:10px 12px;border-radius:18px}.yl{font-size:11px;color:var(--mut)}.yv{font-size:20px;font-weight:700;margin:2px 0}
+/* settings */
+.wpprev{height:120px;border-radius:18px;background:#111 center/cover;border:1px solid rgba(255,255,255,.12)}
+.wpprev:not([style*="url"]){display:none}
+.accsel{display:flex;gap:6px}.accsel button{border-radius:99px!important;padding:7px 12px;font:inherit;font-size:12.5px;font-weight:700;color:var(--tx);cursor:pointer}
+.accsel button.on{outline:2px solid var(--ac)}
+input[type=range]{accent-color:var(--ac)}
+/* sheet */
+.sheet{left:8px!important;right:8px!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;border-radius:34px!important;max-width:624px!important;
+ background:linear-gradient(160deg,rgba(28,28,28,.72),rgba(14,14,14,.8)) padding-box,linear-gradient(150deg,rgba(255,255,255,.45),rgba(255,255,255,.05) 35%,rgba(255,255,255,.2)) border-box!important;border:1px solid transparent;
+ -webkit-backdrop-filter:blur(30px) saturate(150%);backdrop-filter:blur(30px) saturate(150%);box-shadow:0 -10px 40px rgba(0,0,0,.5),inset 0 1px 1px rgba(255,255,255,.2)!important;padding-bottom:18px!important;transform:translateY(calc(100% + 30px))!important}
+.open .sheet{transform:none!important}
+.sheetbg{background:rgba(0,0,0,.4)!important}
+.seg{background:rgba(255,255,255,.07)!important;border-radius:99px!important}.seg div{border-radius:99px!important}
+.seg div.on.e,.seg div.on.i,.seg div.on.v{background:var(--ac)!important;color:var(--acd)!important}
+.save,.save.i,.save.v{background:linear-gradient(180deg,color-mix(in srgb,var(--ac) 55%,#fff),var(--ac2))!important;color:var(--acd)!important;border-radius:99px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 26px color-mix(in srgb,var(--ac2) 40%,transparent)}
+.amt input{font-weight:600!important;letter-spacing:-.04em}
+.calc{text-align:center;color:var(--ac);font-weight:700;font-size:13px;min-height:16px;margin:-6px 0 6px}
+.qamt{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.qamt button{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:var(--tx);border-radius:99px;padding:7px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.qamt .op{color:var(--ac)}
+input.desc,.dates input{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:16px!important}
+.pick div{border-radius:18px!important;border:1px solid rgba(255,255,255,.08)!important}
+.pick div.on{border-color:#fff!important;box-shadow:0 0 14px rgba(255,255,255,.25)}
+.dates .chip.on{background:var(--ac)!important;color:var(--acd)!important}
+.msg{background:rgba(30,30,30,.85)!important;color:#fff!important;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15)}
+.lock{background:rgba(0,0,0,.6)!important;-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px)}
+/* hide amounts */
+body.hideamt :is(.big2,.num,.row .s,.cat .v,.months .a,.wallet .v,.fr .am,.kpi b,.day>span:last-child,.leg b,.rl b,.bud-h b,#fxEq,#xtbEq,.tot b,.fsum b,.goal .bud-h span:last-child,.lc-f b,.mini b,.donut text){filter:blur(8px)}
+
+.fab2{display:none!important}
+.tot,#invDep,.day{text-shadow:0 1px 8px rgba(0,0,0,.85),0 0 2px rgba(0,0,0,.6)}
+.tot{color:rgba(255,255,255,.78)!important;padding:0 4px}
+body.hideamt #eyeBtn svg{stroke:#111}
+
 </style>
 </head>
 <body>
+<div id="wpbg"></div><div id="wpdim"></div>
 <div class="wrap">
 
 <section class="tab on" id="t-home">
+  <div class="hhd"><div><h1 id="hMonth">Luna</h1><div class="hsub" id="hDate"></div></div><div class="hbtns"><button class="cb g" id="eyeBtn" aria-label="Ascunde sumele"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="cb g" id="accBtn" aria-label="Cont"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button></div></div>
+  <div id="eveWarn"></div>
+  <div class="g hero2" id="hero2"></div>
+  <div class="qacts" id="qacts"></div>
+  <div class="bento" id="bento"></div>
   <div class="hero">
     <div class="lbl" id="hLbl">Cheltuieli</div>
     <div class="big" id="hTot">–</div>
     <div class="sub" id="hSub"></div>
     <div class="acts"><button id="aAdd"><i>＋</i>Adaugă</button><button id="fabT"><i>💵</i>Tips</button><button id="aChk"><i>✓</i>Verifică</button><button id="aFix"><i>📌</i>Fixe</button></div>
   </div>
-  <div class="mslot" data-slot="home"></div>
-  <div id="bkWarn"></div><div id="budAlert"></div><div id="daily"></div>
+  <div id="bkWarn"></div><div id="budAlert"></div><div id="daily" hidden></div>
   <div class="card wallet"><div><div class="l">Ar trebui să ai acum (cash + card)</div><div class="v" id="wExp">–</div><div class="h" id="wHist"></div></div><button id="wBtn">Verifică</button></div>
   <div class="fx"><span>Valută</span><label>💶<input id="fxEUR" inputmode="decimal">€</label><label>💷<input id="fxGBP" inputmode="decimal">£</label><span class="eq" id="fxEq"></span></div>
   <div class="tot" id="totAll"></div>
@@ -328,6 +458,7 @@ body.t-home .fab2{display:block}
   <div class="tot" id="invDep"></div>
   <div class="card fixed" id="fixed"></div>
   <h2>🎯 Obiective</h2><div class="card" id="goals"></div>
+  <div class="mslot" data-slot="home" hidden></div>
 </section>
 
 <section class="tab" id="t-list">
@@ -345,6 +476,7 @@ body.t-home .fab2{display:block}
   <div id="report"></div>
   <div id="charts"></div>
   <div id="budgets"></div>
+  <div id="yoy"></div>
   <div id="incWrap"><h2>Venituri</h2><div class="inc-tiles" id="incTiles"></div></div>
   <h2>Cheltuieli pe categorii</h2>
   <div class="cats" id="cats"></div>
@@ -356,12 +488,18 @@ body.t-home .fab2{display:block}
 
 <section class="tab" id="t-set">
   <div class="phead"><h1>Setări</h1></div>
-  <h2>🎨 Temă</h2>
-  <div class="card"><div class="tpick on" id="tpick">
-<button data-th="petrol"><i style="background:linear-gradient(160deg,#3a7591,#163444)"></i>Petrol</button>
-<button data-th="stone"><i style="background:url(stone.jpg) 70% 35%/220%"></i>Piatră</button>
-<button data-th="blue"><i style="background:linear-gradient(160deg,#3b82f6,#1e293b)"></i>Albastru</button>
-<button data-th="neon"><i style="background:linear-gradient(135deg,#7c5cff,#ff5ca8)"></i>Neon</button></div></div>
+  <h2>🎨 Aspect</h2>
+  <div class="card setc">
+    <div class="wpprev" id="wpPrev"></div>
+    <label class="sbtn" for="wpFile">🖼 Alege fundal din galerie</label>
+    <input type="file" id="wpFile" accept="image/*" hidden>
+    <button class="sbtn" id="wpDel">Elimină fundalul</button>
+    <label class="srow">Întunecare fundal<span><input type="range" id="wpDim" min="20" max="85" step="5" style="width:140px"></span></label>
+    <div class="srow">Culoare accent<span class="accsel"><button data-acc="verde" class="g">🟢 Verde</button><button data-acc="alb" class="g">⚪ Alb</button></span></div>
+    <div class="shint">Fundalul rămâne doar pe acest telefon (nu se sincronizează).</div>
+  </div>
+  <h2>🌙 Reminder seara</h2>
+  <div class="card setc"><label class="srow">Arată „Ai notat tot azi?” după ora<span><input id="eveH" inputmode="numeric" placeholder="20" style="width:60px"> :00</span></label><div class="shint">Apare în aplicație dacă după ora asta nu ai nicio tranzacție azi.</div></div>
   <h2>💰 Buget lunar pe categorii</h2>
   <div class="card setc" id="budEdit"></div>
   <h2>🏦 Economisire</h2>
@@ -383,20 +521,22 @@ body.t-home .fab2{display:block}
 
 </div>
 
-<button class="fab2" id="fabT2">💵 Tips</button>
-<nav class="tbar">
+<button class="fab2" id="fabT2" hidden>💵 Tips</button>
+<nav class="tbar g">
   <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Acasă</button>
   <button data-go="list"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Tranzacții</button>
-  <button class="plus" id="fab" aria-label="Adaugă"><span>+</span></button>
   <button data-go="stats"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Statistici</button>
   <button data-go="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Setări</button>
 </nav>
+<button class="fabx g" id="fab" aria-label="Adaugă"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
 <div class="sheetbg" id="bg"></div>
 <div class="sheet" id="sheet">
   <div class="grab"></div>
   <div class="qt" id="qt">💵 Tips</div>
   <div class="seg three"><div class="e" data-ty="0">Cheltuială</div><div class="i" data-ty="1">Venit</div><div class="v" data-ty="2">Investiție</div></div>
   <div class="amt"><input id="fs" inputmode="decimal" placeholder="0" autocomplete="off"><span>lei</span></div>
+  <div class="calc" id="calcEq"></div>
+  <div class="qamt"><button data-qa="10">+10</button><button data-qa="20">+20</button><button data-qa="50">+50</button><button data-qa="100">+100</button><button data-qa="+" class="op">＋</button><button data-qa="c" class="op">C</button></div>
   <input class="desc" id="ft" placeholder="Pe ce? (ex: Lidl, tuns, Glovo)" autocomplete="off">
   <div class="sugg" id="sugg"></div>
   <div class="lab catl">Categorie</div>
@@ -912,6 +1052,147 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)pull()});
 try{if(sessionStorage.getItem('synced')){sessionStorage.removeItem('synced');setTimeout(()=>toast('☁️ Date actualizate din cloud'),400)}}catch(e){}
 pull();
 
+
+// ================= v5: Liquid Glass + smart home =================
+try{applyTheme('petrol')}catch(e){}
+const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set:(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){toast('Spațiu insuficient pe telefon')}}};
+// ---- accent / wallpaper / hide ----
+function applyLook(){
+  document.body.classList.toggle('acc-alb',LS.get('bani-acc','verde')==='alb');
+  const w=LS.get('bani-wall',null);$('wpbg').style.backgroundImage=w?`url(${w})`:'';
+  document.body.classList.toggle('haswp',!!w);
+  const d=+LS.get('bani-dim','45');document.documentElement.style.setProperty('--dim',(d/100).toFixed(2));
+  if($('wpDim'))$('wpDim').value=d;
+  document.body.classList.toggle('hideamt',LS.get('bani-hide','0')==='1');
+  document.querySelectorAll('[data-acc]').forEach(b=>b.classList.toggle('on',b.dataset.acc===LS.get('bani-acc','verde')));
+  if($('wpPrev'))$('wpPrev').style.backgroundImage=w?`url(${w})`:'';
+  if($('wpDel'))$('wpDel').style.display=w?'':'none';
+}
+$('wpFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
+  try{const img=await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(f)});
+    const W=Math.min(1000,img.naturalWidth),H=Math.round(img.naturalHeight*W/img.naturalWidth);
+    const c=document.createElement('canvas');c.width=W;c.height=H;c.getContext('2d').drawImage(img,0,0,W,H);
+    LS.set('bani-wall',c.toDataURL('image/jpeg',.8));applyLook();toast('✓ Fundal setat')}
+  catch(err){toast('Nu am putut încărca imaginea')}e.target.value=''};
+$('wpDel').onclick=()=>{LS.set('bani-wall',null);applyLook();toast('Fundal eliminat')};
+$('wpDim').oninput=e=>{LS.set('bani-dim',e.target.value);applyLook()};
+document.querySelectorAll('[data-acc]').forEach(b=>b.onclick=()=>{LS.set('bani-acc',b.dataset.acc);applyLook()});
+$('eyeBtn').onclick=()=>{LS.set('bani-hide',LS.get('bani-hide','0')==='1'?'0':'1');applyLook()};
+$('accBtn').onclick=()=>{go('set');setTimeout(()=>$('syncBox').scrollIntoView({behavior:'smooth',block:'center'}),50)};
+$('eveH').value=store.eveH||'';
+$('eveH').addEventListener('change',e=>{const v=parseInt(e.target.value);store.eveH=v>=0&&v<=23?v:undefined;save();render()});
+// quick actions (move existing buttons with their handlers)
+['fabT','aChk','aFix'].forEach(id=>{const b=$(id);if(b){b.classList.add('g');$('qacts').appendChild(b)}});
+$('fabT').innerHTML='<i>💵</i>Tips';$('aChk').innerHTML='<i>✓</i>Verifică';$('aFix').innerHTML='<i>📌</i>Fixe';
+
+// ---- models ----
+const isFixedTx=x=>fixed.some(f=>(f.k||[f.n.toLowerCase()]).some(k=>hit(x.t.toLowerCase(),k)));
+function incomeModel(k){const mm=inMonth(k),isSal=x=>x.v&&x.c==='Salariu';
+  const sal=sum(mm.filter(isSal));let lastSal=0;
+  const sm=[...new Set(data.filter(isSal).map(x=>mKey(x.d)))].filter(m=>m<k).sort();
+  if(sm.length)lastSal=sum(inMonth(sm[sm.length-1]).filter(isSal));
+  return {sal:sal>0?sal:lastSal,salEst:!(sal>0)&&lastSal>0,tips:sum(mm.filter(x=>x.v&&x.c==='Tips')),other:sum(mm.filter(x=>x.v&&x.c!=='Salariu'&&x.c!=='Tips'))}}
+function dailyModel(){const t=today(),k=mKey(t),mm=inMonth(k),m=incomeModel(k);
+  const expBefore=sum(mm.filter(x=>E(x)&&x.d<t)),inv=sum(mm.filter(IV)),due=fixedDue(),tgt=+store.saveTarget||0;
+  const dl=dim(k)-(+t.slice(8))+1;
+  const baseSal=m.sal+m.other-expBefore-inv-due-tgt;
+  return {per:(baseSal+m.tips)/dl,perSal:baseSal/dl,perTips:m.tips/dl,tday:sum(mm.filter(x=>E(x)&&x.d===t)),dl,salEst:m.salEst}}
+const median=a=>{a=[...a].sort((p,q)=>p-q);const n=a.length;return !n?0:n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2};
+function unusualList(){const by={};data.filter(x=>E(x)&&!isFixedTx(x)).forEach(x=>(by[x.c]=by[x.c]||[]).push(x.s));
+  const skip=['Rate & credite','Facturi & abonamente'];
+  return data.filter(x=>E(x)&&x.d>=today(30)&&!skip.includes(x.c)&&!isFixedTx(x)&&(by[x.c]||[]).length>=5&&x.s>=100)
+    .map(x=>({x,med:median(by[x.c]),r:x.s/median(by[x.c])})).filter(o=>o.med>0&&o.r>=3).sort((a,b)=>b.x.d.localeCompare(a.x.d)||b.r-a.r)}
+function varDaily(k,days){const un=new Set(unusualList().map(o=>o.x));return sum(inMonth(k).filter(x=>E(x)&&!isFixedTx(x)&&!un.has(x)&&+x.d.slice(8)<=days))/Math.max(1,days)}
+function forecast(){const t=today(),k=mKey(t),mm=inMonth(k),m=incomeModel(k),el=+t.slice(8),D=dim(k);
+  const ms=[...new Set(data.map(x=>mKey(x.d)))].filter(x=>x<k).sort().slice(-3);
+  const prior=ms.length?ms.reduce((a,mk)=>a+varDaily(mk,dim(mk)),0)/ms.length:varDaily(k,el);
+  const w=el/(el+7),rate=w*varDaily(k,el)+(1-w)*prior;
+  const exp=sum(mm.filter(E));
+  return {val:m.sal+m.tips+m.other-exp-rate*(D-el)-fixedDue(),rate,salEst:m.salEst}}
+
+// ---- home ----
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+function renderHome(){const t=today(),k=mKey(t),mm=inMonth(k),dt=new Date(t+'T12:00:00'),D=dim(k),el=+t.slice(8);
+  $('hMonth').textContent=LUNI[dt.getMonth()];
+  $('hDate').innerHTML=`${cap(ZILE[dt.getDay()])}, ${el} · <b>${D-el} zile rămase</b>`;
+  const inc=sum(mm.filter(x=>x.v)),exp=sum(mm.filter(E)),sold=inc-exp,fc=forecast();
+  // sparkline: cumulative net per day + dashed forecast
+  const net=[];let c=0;for(let d=1;d<=el;d++){const ds=k+'-'+String(d).padStart(2,'0');c+=sum(mm.filter(x=>x.d===ds&&x.v))-sum(mm.filter(x=>x.d===ds&&E(x)));net.push(c)}
+  const all=[...net,fc.val,0],mn=Math.min(...all),mx=Math.max(...all),W=320,H=56,P=4;
+  const sx=d=>P+(d-1)/(D-1)*(W-2*P),sy=v=>H-P-(v-mn)/((mx-mn)||1)*(H-2*P);
+  const path=net.map((v,i)=>(i?'L':'M')+sx(i+1).toFixed(1)+' '+sy(v).toFixed(1)).join(' ');
+  const lx=sx(el),ly=sy(c);
+  $('hero2').innerHTML=`<div class=cap>Sold ${LUNI[dt.getMonth()].toLowerCase()} · RON</div>
+   <div class="big2 num">${sold>=0?'+':'−'}${fmt(Math.abs(sold))}<small>lei</small></div>
+   <svg class=spark viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><defs><linearGradient id=spg x1=0 x2=0 y1=0 y2=1><stop offset=0 stop-color="var(--ac)" stop-opacity=".35"/><stop offset=1 stop-color="var(--ac)" stop-opacity="0"/></linearGradient></defs>
+   ${net.length>1?`<path d="${path} L${lx} ${H} L${sx(1)} ${H}Z" fill="url(#spg)"/><path d="${path}" fill=none stroke="var(--ac)" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round class=sline />`:''}
+   <path d="M${lx} ${ly} L${sx(D)} ${sy(fc.val)}" stroke="var(--ac)" stroke-width=1.6 stroke-dasharray="3 4" opacity=.55 fill=none />
+   <circle cx=${lx} cy=${ly} r=3.6 fill="#fff"/></svg>
+   <div class=pills2><span class="g num">↑ ${fmt(inc)}</span><span class="g num">↓ ${fmt(exp)}</span>${inc?`<span class="g" style="color:${sold>=0?'var(--pos)':'var(--neg)'}">${sold>=0?pct(sold,inc)+'% economisit':'peste venit'}</span>`:''}</div>`;
+  // bento
+  const dm=dailyModel(),p=dm.per>0?Math.round(dm.tday/dm.per*100):100,over=p>100,C=2*Math.PI*18;
+  const fcD=new Date(k+'-'+D+'T12:00:00');
+  // calendar
+  const first=(new Date(+k.slice(0,4),+k.slice(5,7)-1,1).getDay()+6)%7;
+  const daily={};data.filter(x=>E(x)&&x.d>=today(60)).forEach(x=>daily[x.d]=(daily[x.d]||0)+x.s);
+  const md=median(Object.values(daily))||1;
+  let cal='';for(let i=0;i<first;i++)cal+='<i class=e></i>';
+  for(let d=1;d<=D;d++){const ds=k+'-'+String(d).padStart(2,'0'),v=sum(mm.filter(x=>E(x)&&x.d===ds));
+    const lv=d>el?'f':!v?'0':v<md*.5?'1':v<md?'2':v<md*2?'3':v<md*3?'4':'5';
+    cal+=`<i class="l${lv}${d===el?' td':''}" data-day="${ds}"></i>`}
+  const un=unusualList()[0];
+  $('bento').innerHTML=`
+   <div class="g t"><div class=cap>Azi poți</div><div class="v num">${dm.per<0?'−':''}${fmt(Math.abs(dm.per))}<span class=u> lei</span></div>
+    <div class=tsub>cheltuit <b class=num style="color:${over?'var(--neg)':'var(--pos)'}">${fmt(dm.tday)}</b></div>
+    <div class=tsub2>salariu <b class=num>${fmt(dm.perSal)}</b> · tips <b class=num style="color:var(--ac)">+${fmt(dm.perTips)}</b>/zi</div>
+    <svg class=ring viewBox="0 0 44 44"><circle cx=22 cy=22 r=18 fill=none stroke="rgba(255,255,255,.1)" stroke-width=5 />${p>0?`<circle cx=22 cy=22 r=18 fill=none stroke="${over?'var(--neg)':'var(--ac)'}" stroke-width=5 stroke-linecap=round stroke-dasharray="${Math.min(1,p/100)*C} 200" transform="rotate(-90 22 22)"/>`:''}<text x=22 y=25.5 text-anchor=middle>${p}%</text></svg></div>
+   <div class="g t"><div class=cap>Prognoză ${D} ${LS3[fcD.getMonth()]}</div><div class="v num" style="color:${fc.val>=0?'var(--pos)':'var(--neg)'}">${fc.val>=0?'+':'−'}${fmt(Math.abs(fc.val))}</div>
+    <div class=tsub>la ritmul actual · ~${fmt(fc.rate)} lei/zi</div><div class=tsub2>fără tips viitoare${fc.salEst?' · salariu estimat':''}</div></div>
+   <div class="g t"><div class=cap>Calendar</div><div class=hm>${cal}</div></div>
+   ${un?`<div class="g t alert" data-ed="${data.indexOf(un.x)}"><div class=cap>⚠ Neobișnuit</div><div class=un-t>${esc(un.x.t)}</div><div class="un-v num">${fmt(un.x.s)}</div><div class=tsub>${un.r.toFixed(1).replace('.0','')}× față de obișnuit la ${esc(un.x.c.split(' & ')[0])}</div></div>`
+       :`<div class="g t"><div class=cap>✓ Nimic neobișnuit</div><div class=tsub style="margin-top:10px">Nicio cheltuială peste 3× media categoriei în ultimele 30 de zile.</div></div>`}`;
+}
+document.addEventListener('click',e=>{const d=e.target.closest('[data-day]');if(!d)return;
+  const ds=d.dataset.day;if(ds>today())return;$('q').value=+ds.slice(8)+'.'+ +ds.slice(5,7)+'.'+ds.slice(0,4);go('list');render()});
+// search: add date support
+function srch(arr){const q=Q();if(!q){$('qInfo')&&($('qInfo').textContent='');return arr}
+  const dm=q.match(/^(\d{1,2})\.(\d{1,2})(?:\.(\d{4}))?$/);
+  let r;
+  if(dm){const ds=(dm[3]||today().slice(0,4))+'-'+dm[2].padStart(2,'0')+'-'+dm[1].padStart(2,'0');r=data.filter(x=>x.d===ds)}
+  else{const n=num(q);r=data.filter(x=>x.t.toLowerCase().includes(q)||String(x.c).toLowerCase().includes(q)||(isFinite(n)&&Math.abs(x.s-n)<0.01))}
+  $('qInfo').innerHTML=`<b>${r.length}</b> rezultate${dm?'':' în toate lunile'} · cheltuieli <b>${fmt(sum(r.filter(E)))}</b> lei${r.some(x=>x.v)?` · venituri <b>${fmt(sum(r.filter(x=>x.v)))}</b> lei`:''}`;
+  return r}
+function renderDaily(){}
+// ---- evening reminder ----
+function renderEve(){const h=store.eveH==null?20:store.eveH,now=new Date();
+  const show=now.getHours()>=h&&!data.some(x=>x.d===today())&&LS.get('bani-eve',null)!==today();
+  $('eveWarn').innerHTML=show?`<div class="g eve"><span>🌙 Ai notat tot azi?</span><button id=eveAdd>Adaugă</button><button id=eveNo class=g2>Nimic azi</button></div>`:'';
+  if(show){$('eveAdd').onclick=openSheet;$('eveNo').onclick=()=>{LS.set('bani-eve',today());renderEve()}}}
+// ---- year over year ----
+function renderYoY(){const k=repM(),y=+k.slice(0,4),mo=k.slice(5),pk=(y-1)+'-'+mo,cur=inMonth(k),prv=inMonth(pk);
+  const ytd=(yr)=>data.filter(x=>x.d.slice(0,4)==String(yr)&&x.d.slice(5,7)<=mo);
+  const box=(lbl,mm)=>mm.length?`<div class=g><div class=yl>${lbl}</div><div class="yv num">${fmt(sum(mm.filter(E)))}</div><div class=yl>cheltuit · venit <b class=num>${fmt(sum(mm.filter(x=>x.v)))}</b></div></div>`:`<div class=g><div class=yl>${lbl}</div><div class=yv>—</div><div class=yl>fără date</div></div>`;
+  const ce=sum(cur.filter(E)),pe=sum(prv.filter(E));
+  $('yoy').innerHTML=`<h2>📅 An la an · ${LUNI[+mo-1]}</h2><div class="card rep"><div class=yy>${box(LUNI[+mo-1]+' '+(y-1),prv)}${box(LUNI[+mo-1]+' '+y,cur)}</div>
+   ${prv.length?`<div class=shint style="margin-top:8px">Cheltuieli: <b style="color:${ce>pe?'var(--neg)':'var(--pos)'}">${ce>pe?'▲ +':'▼ −'}${pct(Math.abs(ce-pe),pe)}%</b> față de ${LUNI[+mo-1].toLowerCase()} ${y-1}</div>`:`<div class=shint style="margin-top:8px">Comparația apare automat din ${LUNI[+mo-1].toLowerCase()} ${y+1}, când vei avea un an de date.</div>`}
+   <div class="yy" style="margin-top:10px">${box('Ian–'+LUNI[+mo-1].slice(0,3)+' '+(y-1),ytd(y-1))}${box('Ian–'+LUNI[+mo-1].slice(0,3)+' '+y,ytd(y))}</div></div>`}
+
+// ---- amount calculator + quick amounts ----
+function calcVal(s){s=String(s).replace(/,/g,'.').replace(/\s/g,'').replace(/[+\-*/.]+$/,'');if(!s||!/^[0-9+\-*/.()]+$/.test(s))return null;
+  try{const v=Function('"use strict";return ('+s+')')();return isFinite(v)?Math.round(v*100)/100:null}catch(e){return null}}
+const hasOp=s=>/[0-9.][+\-*/]/.test(String(s));
+function calcShow(){const s=$('fs').value;$('calcEq').textContent=hasOp(s)&&calcVal(s)!=null?'= '+fmt(calcVal(s))+' lei':''}
+$('fs').addEventListener('input',calcShow);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-qa]');if(!b)return;const f=$('fs'),a=b.dataset.qa;
+  if(a==='c')f.value='';else if(a==='+'){if(f.value&&!/[+\-*/]$/.test(f.value))f.value+='+'}
+  else{const cur=calcVal(f.value);f.value=/[+\-*/]$/.test(f.value)?f.value+a:String((cur||0)+ +a)}
+  calcShow();f.dispatchEvent(new Event('input'))});
+document.addEventListener('click',e=>{if(!e.target.closest('#saveBtn'))return;const f=$('fs');if(hasOp(f.value)){const v=calcVal(f.value);if(v!=null)f.value=String(v)}$('calcEq').textContent=''},true);
+$('fs').addEventListener('keydown',e=>{if(e.key==='Enter'&&hasOp($('fs').value)){const v=calcVal($('fs').value);if(v!=null)$('fs').value=String(v)}},true);
+
+// ---- render hook ----
+const _r5=render;render=function(){_r5();try{renderHome();renderEve();renderYoY()}catch(err){console.error(err)}};
+applyLook();render();
 
 </script>
 </body>
