@@ -432,6 +432,8 @@ body.hideamt :is(.big2,.num,.row .s,.cat .v,.months .a,.wallet .v,.fr .am,.kpi b
 .tot{color:rgba(255,255,255,.78)!important;padding:0 4px}
 body.hideamt #eyeBtn svg{stroke:#111}
 
+.fixed .fr:has(input.n){flex-wrap:wrap}.fixed .fr input.n{flex:1 1 100%!important}
+
 </style>
 </head>
 <body>
@@ -1210,7 +1212,7 @@ function renderFixed(ev){const cm=mKey(today());
   let h=`<div class="hd"><b>📌 Cheltuieli fixe</b><span>${fmt(tot)} lei luna asta</span><button id="fxEdit">${fixEdit?'Gata':'Editează'}</button></div>`;
   let due=0;const ml=k=>LUNI[+k.slice(5)-1].slice(0,3).toLowerCase()+' '+k.slice(0,4);
   fixed.forEach((f,i)=>{const k=CATS[f.c]||CATS.Diverse;
-    if(fixEdit){h+=`<div class="fr"><input class="n" data-fn="${i}" value="${esc(f.n)}"><input class="a" data-fa="${i}" inputmode="decimal" value="${f.s}"><select data-fc="${i}">${['Rate & credite','Facturi & abonamente','Transport & mașină'].map(c=>`<option ${c===f.c?'selected':''}>${c}</option>`).join('')}</select><button class="del" data-fd="${i}">×</button></div>`;return}
+    if(fixEdit){h+=`<div class="fr"><input class="n" data-fn="${i}" value="${esc(f.n)}"><input class="a" data-fa="${i}" inputmode="decimal" value="${f.s}"><select data-fc="${i}">${['Rate & credite','Facturi & abonamente','Transport & mașină'].map(c=>`<option ${c===f.c?'selected':''}>${c}</option>`).join('')}</select><button class="del" data-fd="${i}">×</button></div><div class="fr" style="border-top:0;padding-top:0;font-size:12px;color:var(--mut)">din <input type="month" data-ff="${i}" value="${f.from||''}" style="flex:1"> până <input type="month" data-fu="${i}" value="${f.until||''}" style="flex:1"></div>`;return}
     const act=fAct(f,cm),a=fAmt(f,cm),p=fixPaid(f),ps=sum(p),vr=!(a>0);
     const note=!act?(f.from&&cm<f.from?`din ${ml(f.from)}`:'încheiat'):f.until?`până în ${ml(f.until)}`:'';
     if(act&&!p.length&&!vr)due+=a;
@@ -1219,6 +1221,98 @@ function renderFixed(ev){const cm=mKey(today());
   else h+=`<div class="fsum"><span>Rămas de plătit în ${LUNI[new Date().getMonth()].toLowerCase()}: <b>${fmt(due)} lei</b></span>${ev==null?'':`<span>Disponibil după fixe: <b>≈ ${fmt(ev-due)} lei</b></span>`}</div>`;
   $('fixed').innerHTML=h}
 render();
+
+// ================= v7: alimentare = combustibil =================
+CATS["Alimente & cumpărături"].k=CATS["Alimente & cumpărături"].k.filter(k=>k!=='alimentare');
+if(!CATS["Transport & mașină"].k.includes('alimentare'))CATS["Transport & mașină"].k.push('alimentare');
+if(!store.mig7){let n=0;
+  data.forEach(x=>{if(E(x)&&/^alimentare\b/i.test(x.t.trim())&&x.c==='Alimente & cumpărături'){x.c='Transport & mașină';n++}});
+  fixed.forEach(f=>{if(/combustibil/i.test(f.n)){f.k=f.k||['combustibil'];if(!f.k.includes('alimentare'))f.k.push('alimentare')}});
+  store.mig7=1;save();render();if(n)setTimeout(()=>toast('✓ '+n+' alimentări mutate la Transport'),800)}
+
+// ================= v8: backup banner, editable months, debt plan =================
+function renderBk(){const lb=store.lastBackup;const days=lb?Math.floor((new Date(today())-new Date(lb))/864e5):null;
+  const synced=typeof auth!=='undefined'&&auth&&store.syncedAt&&Date.now()-store.syncedAt<7*864e5;
+  $('bkWarn').innerHTML=!synced&&(days===null||days>=7)?`<div class="warn"><span>💾 ${days===null?'Nu ai făcut încă niciun backup':'Ultimul backup acum '+days+' zile'}</span><button id="bkNow">Exportă</button></div>`:'';
+  const b=$('bkNow');if(b)b.onclick=doExport}
+const _rf8=renderFixed;
+function mAdd(k,n){const d=new Date(+k.slice(0,4),+k.slice(5,7)-1+n,1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+function mDiff(a,b){return (+b.slice(0,4)-+a.slice(0,4))*12+(+b.slice(5,7)-+a.slice(5,7))}
+const ml8=k=>['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'][+k.slice(5)-1]+' '+k.slice(0,4);
+document.addEventListener('change',e=>{const d=e.target.dataset;
+  if(d.ff!==undefined){fixed[+d.ff].from=e.target.value||undefined;save();render()}
+  else if(d.fu!==undefined){fixed[+d.fu].until=e.target.value||undefined;save();render()}});
+function renderDebts(){const cm=mKey(today());
+  const L=fixed.filter(f=>f.c==='Rate & credite'&&f.until&&f.until>=cm);
+  if(!L.length){$('debts').innerHTML='<div class="shint">Adaugă la cheltuielile fixe (categoria Rate & credite) luna de final, ca să apară aici.</div>';return}
+  let tot=0,h='';const ends=[];
+  L.forEach(f=>{const st=f.from||cm,start=st>cm?st:cm,paidNow=fixPaid(f).length&&start===cm;
+    let rem=0,cnt=0;for(let k=start;k<=f.until;k=mAdd(k,1)){if(k===cm&&paidNow)continue;rem+=fAmt(f,k);cnt++}
+    const all=f.from?mDiff(f.from,f.until)+1:null,done=all!=null?all-cnt:null;tot+=rem;ends.push([f.until,f.n,fAmt(f,mAdd(f.until,0))]);
+    h+=`<div class="bud"><div class="bud-h"><span><b>${esc(f.n)}</b> · ${fmt(+f.s)} lei/lună${f.over?Object.keys(f.over).filter(k=>k>=cm).map(k=>` <span style="color:var(--mut)">(${ml8(k).split(" ")[0]}: ${fmt(f.over[k])})</span>`).join(""):""}</span><span><b class=num>${fmt(rem)}</b> lei</span></div>
+     ${all?`<div class="bar"><i style="width:${Math.max(2,done/all*100)}%;background:linear-gradient(90deg,var(--ac3),var(--ac))"></i></div>`:''}
+     <div class="bud-f">${cnt} rate rămase${all?` din ${all}`:''} · ultima în <b>${ml8(f.until)}</b>${st>cm?` · începe în ${ml8(st)}`:''}</div></div>`});
+  ends.sort((a,b)=>a[0].localeCompare(b[0]));
+  const now=L.filter(f=>fAct(f,mAdd(cm,1))).reduce((a,f)=>a+fAmt(f,mAdd(cm,1)),0);
+  let tl='',r=L.reduce((a,f)=>a+ +f.s,0);ends.forEach(([u,n,a])=>{r-=a;tl+=`<div class=rl><span>după ${ml8(u)} (${esc(n)} achitat)</span><b class=num>${fmt(Math.max(0,r))} lei/lună</b></div>`});
+  $('debts').innerHTML=`<div class="kpi" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class=g style="padding:10px 12px;border-radius:16px"><span class=cap>Total rămas</span><div class="num" style="font-size:20px;font-weight:700">${fmt(tot)} lei</div></div><div class=g style="padding:10px 12px;border-radius:16px"><span class=cap>Rate luna viitoare</span><div class="num" style="font-size:20px;font-weight:700">${fmt(now)} lei</div></div></div>${h}<div class=sub-h>Cum scad ratele</div>${tl}`}
+render();
+
+// ================= v9: merge sync (multi-device safe) =================
+function txId(x){return x.ts?'t'+x.ts:'k'+x.d+'|'+x.t+'|'+x.s+'|'+x.c+'|'+(x.v?1:0)+(x.k||'')}
+const txH=x=>JSON.stringify([x.d,x.t,x.s,x.c,x.v||0,x.k||'']);
+function hGet(){try{return JSON.parse(localStorage.getItem('bani-h')||'null')}catch(e){return null}}
+function hSet(h){try{localStorage.setItem('bani-h',JSON.stringify(h))}catch(e){}}
+function track(){const old=hGet()||{},now={},t=Date.now();store.del=store.del||{};
+  data.forEach(x=>{const id=txId(x),h=txH(x);now[id]=h;if(old[id]!==undefined&&old[id]!==h)x.u=t;else if(old[id]===undefined&&hGet())x.u=x.u||t});
+  if(hGet())Object.keys(old).forEach(id=>{if(!(id in now))store.del[id]=t});
+  const lim=t-120*864e5;Object.keys(store.del).forEach(id=>{if(store.del[id]<lim)delete store.del[id]});
+  hSet(now)}
+if(!hGet()){const h={};data.forEach(x=>h[txId(x)]=txH(x));hSet(h)}
+const _s9=save;save=function(){track();_s9()};
+function mergeInto(rem){
+  const del=Object.assign({},rem.del||{});Object.entries(store.del||{}).forEach(([k,v])=>{if(!del[k]||v>del[k])del[k]=v});
+  const m=new Map();
+  (rem.items||[]).forEach(x=>m.set(txId(x),x));
+  data.forEach(x=>{const id=txId(x),r=m.get(id);if(!r||(x.u||0)>=(r.u||0))m.set(id,x)});
+  const items=[...m.entries()].filter(([id,x])=>!(del[id]&&del[id]>=(x.u||0))).map(e=>e[1]);
+  const ck=new Map();[...(rem.checks||[]),...checks].forEach(c=>ck.set(c.ts,c));
+  if((rem.mtime||0)>(store.mtime||0)){
+    if(rem.fixed)fixed.splice(0,fixed.length,...rem.fixed);
+    if(rem.fx)Object.assign(fx,rem.fx);if(rem.xtb)Object.assign(xtb,rem.xtb);
+    ['goals','budgets','saveTarget','pin','eveH','lastBackup','mig6','mig7'].forEach(k=>{if(k in rem)store[k]=rem[k]});
+  }
+  data.splice(0,data.length,...items);checks.splice(0,checks.length,...[...ck.values()].sort((a,b)=>a.ts-b.ts));
+  store.del=del;store.mtime=Math.max(rem.mtime||0,store.mtime||0);
+  const h={};data.forEach(x=>h[txId(x)]=txH(x));hSet(h);
+  try{localStorage.setItem(LSKEY,JSON.stringify(snap()))}catch(e){}
+}
+const sig=o=>{const it=(o.items||[]).map(x=>txId(x)+txH(x)).sort().join();return it.length+':'+it.split('').reduce((a,c)=>(a*31+c.charCodeAt(0))|0,0)+':'+(o.checks||[]).length};
+async function pull(manual){if(!auth||busy)return;if(!navigator.onLine){syncSt='offline';renderSync();return}
+  busy=true;let needPush=false;
+  try{const rows=await rest('GET','bani?select=data,updated_at&user_id=eq.'+auth.uid);const rem=rows&&rows[0]&&rows[0].data;
+    if(!rem){needPush=true}
+    else{const before=sig(snap());mergeInto(rem);needPush=pending||sig(snap())!==sig(rem)||(store.mtime||0)>(rem.mtime||0);
+      if(sig(snap())!==before){render();setTimeout(()=>toast('☁️ Sincronizat cu celălalt dispozitiv'),300)}
+      syncSt='sincronizat';store.syncedAt=Date.now()}}
+  catch(e){syncSt='eroare: '+e.message}finally{busy=false;renderSync()}
+  if(needPush)await push();else if(manual)toast(syncSt==='sincronizat'?'☁️ Sincronizat':syncSt)}
+async function push(){if(!auth)return;if(!navigator.onLine){pending=true;syncSt='offline · se trimite când revii online';renderSync();return}
+  busy=true;try{
+    const rows=await rest('GET','bani?select=data&user_id=eq.'+auth.uid);const rem=rows&&rows[0]&&rows[0].data;if(rem)mergeInto(rem);
+    await rest('POST','bani',{user_id:auth.uid,data:JSON.parse(JSON.stringify(snap())),updated_at:new Date().toISOString()});
+    pending=false;store.syncedAt=Date.now();localStorage.setItem(LSKEY,JSON.stringify(snap()));syncSt='sincronizat';render()}
+  catch(e){pending=true;syncSt='eroare: '+e.message}finally{busy=false;renderSync()}}
+
+// ================= v10: near real-time sync (poll updated_at) =================
+var lastSeen=null,pollT=null;
+const _pull10=pull,_push10=push;
+async function pollRemote(){if(!auth||busy||document.hidden||!navigator.onLine)return;
+  try{const rows=await rest('GET','bani?select=updated_at&user_id=eq.'+auth.uid);const u=rows&&rows[0]&&rows[0].updated_at;
+    if(u&&u!==lastSeen){lastSeen=u;await pull()}}catch(e){}}
+function schedPush(){if(!auth)return;pending=true;clearTimeout(pushT);pushT=setTimeout(async()=>{await push();try{const rows=await rest('GET','bani?select=updated_at&user_id=eq.'+auth.uid);lastSeen=rows&&rows[0]&&rows[0].updated_at}catch(e){}},700)}
+clearInterval(pollT);pollT=setInterval(pollRemote,4000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)pollRemote()});
 
 </script>
 </body>
