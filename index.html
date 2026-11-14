@@ -240,6 +240,70 @@ body.t-home .fab2{display:block}
 .sbtn{display:block;text-align:left;width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--tx) 6%,transparent);color:var(--tx);border-radius:14px;padding:13px 14px;font:inherit;font-weight:600;font-size:14px;cursor:pointer}
 .shint{font-size:12.5px;color:var(--mut);line-height:1.5}
 .shint b{color:var(--tx)}
+/* ---- v2 features ---- */
+.pos{color:#4ade80}.neg{color:#f87171}
+.warn{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-top:10px;padding:11px 14px;border-radius:14px;background:color-mix(in srgb,#f59e0b 14%,var(--card));border:1px solid color-mix(in srgb,#f59e0b 35%,transparent);font-size:13px;font-weight:600;line-height:1.5}
+.warn.bad{background:color-mix(in srgb,#ef4444 13%,var(--card));border-color:color-mix(in srgb,#ef4444 35%,transparent);display:block}
+.warn button{flex:0 0 auto;border:0;border-radius:10px;padding:8px 12px;font:inherit;font-weight:700;font-size:12.5px;background:#f59e0b;color:#1b1206;cursor:pointer}
+.daily{margin-top:10px;display:flex;align-items:center;gap:12px}
+.daily>div:first-child{flex:1;min-width:0}
+.daily .l{font-size:12px;color:var(--mut);font-weight:600}
+.daily .v{font-size:26px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.daily .v.neg{color:#f87171}
+.daily .h{font-size:11.5px;color:var(--mut);margin-top:3px;line-height:1.45}
+.daily .h b.bad{color:#f87171}.daily .h b.ok{color:#4ade80}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:6px;background:color-mix(in srgb,var(--tx) 10%,transparent);color:var(--mut);font-weight:700}
+.ring{flex:0 0 auto;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--line) 0)}
+.ring span{width:48px;height:48px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:12px;font-weight:700}
+.bud,.goal{padding:8px 0}.bud+.bud,.goal+.goal{border-top:1px solid var(--line)}
+.bud-h{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:6px}
+.bud-h b{font-variant-numeric:tabular-nums}
+.bar{height:9px;border-radius:6px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;transition:width .3s}
+.bud-f{font-size:11.5px;color:var(--mut);margin-top:4px}
+.g-a{display:flex;gap:6px;margin-top:8px}
+.g-a input,.srow input,.srch input{min-width:0;flex:1;background:color-mix(in srgb,var(--tx) 6%,transparent);border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px;outline:none}
+.g-a button{flex:0 0 auto;border:0;border-radius:10px;padding:8px 12px;font:inherit;font-weight:700;font-size:13px;background:#22c55e;color:#06210f;cursor:pointer}
+.g-a button.g2{background:color-mix(in srgb,var(--tx) 10%,transparent);color:var(--tx)}
+.g-a .gdel{background:none;color:#f87171;padding:4px 0}
+.lnk{background:none;border:0;color:#7fb6dc;font:inherit;font-weight:700;font-size:13px;padding:8px 0 0;cursor:pointer}
+.srch{margin-top:12px}.srch input{width:100%;padding:12px 14px;border-radius:14px;font-size:15px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px;font-weight:500}
+.srow span{display:flex;align-items:center;gap:6px;color:var(--mut);font-size:12px}
+.srow input{width:90px;flex:0 0 auto;text-align:right;padding:7px 9px}
+.sdel{display:none;margin-top:10px;width:100%;border:1px solid color-mix(in srgb,#ef4444 40%,transparent);background:none;color:#f87171;border-radius:16px;padding:13px;font:inherit;font-weight:700;cursor:pointer}
+.sheet.edit .sdel{display:block}
+.row{cursor:pointer}.row:active{opacity:.7}
+.dn{display:flex;align-items:center;gap:14px}
+.donut{width:46%;max-width:170px;flex:0 0 auto}
+.donut .d1{fill:var(--tx);font-size:17px;font-weight:700}.donut .d2{fill:var(--mut);font-size:9px}
+.leg{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;font-size:12px}
+.leg div{display:flex;align-items:center;gap:6px}.leg i{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+.leg span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--mut)}
+.lc{width:100%;display:block}.lc .ax{fill:var(--mut);font-size:9px}
+.lc-f{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-top:4px}.lc-f b{color:#4ade80}
+.rep .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.rep .kpi div{background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:12px;padding:9px 10px}
+.rep .kpi span{display:block;font-size:11px;color:var(--mut);font-weight:600}
+.rep .kpi b{font-size:17px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.rep .shint{margin-top:4px}
+.sub-h{font-size:11.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 4px}
+.rl{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:13px;border-top:1px solid var(--line)}
+.rl span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rl b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini{display:flex;align-items:flex-end;gap:6px;margin-top:12px;height:110px}
+.mini div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;font-size:10px}
+.mini i{width:70%;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,#34d399,#10b981)}
+.mini b{font-size:10px}.mini span{color:var(--mut)}
+.lock{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:env(safe-area-inset-top) 30px env(safe-area-inset-bottom)}
+.lock.on{display:flex}
+.lk-t{font-size:18px;font-weight:600}
+.lk-d{display:flex;gap:16px}.lk-d i{width:14px;height:14px;border-radius:50%;border:2px solid var(--tx)}.lk-d i.on{background:var(--tx)}
+.lk-d.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.lk-k{display:grid;grid-template-columns:repeat(3,76px);gap:16px}
+.lk-k button{width:76px;height:76px;border-radius:50%;border:0;background:color-mix(in srgb,var(--tx) 10%,transparent);color:var(--tx);font:inherit;font-size:28px;font-weight:500;cursor:pointer}
+.lk-k button:active{background:color-mix(in srgb,var(--tx) 25%,transparent)}
+.lk-k .lk-c{font-size:13px;background:none}
+.sin{width:100%;background:color-mix(in srgb,var(--tx) 6%,transparent);border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:12px;font:inherit;font-size:15px;outline:none}
 
 </style>
 </head>
@@ -254,17 +318,21 @@ body.t-home .fab2{display:block}
     <div class="acts"><button id="aAdd"><i>＋</i>Adaugă</button><button id="fabT"><i>💵</i>Tips</button><button id="aChk"><i>✓</i>Verifică</button><button id="aFix"><i>📌</i>Fixe</button></div>
   </div>
   <div class="mslot" data-slot="home"></div>
+  <div id="bkWarn"></div><div id="budAlert"></div><div id="daily"></div>
   <div class="card wallet"><div><div class="l">Ar trebui să ai acum (cash + card)</div><div class="v" id="wExp">–</div><div class="h" id="wHist"></div></div><button id="wBtn">Verifică</button></div>
   <div class="fx"><span>Valută</span><label>💶<input id="fxEUR" inputmode="decimal">€</label><label>💷<input id="fxGBP" inputmode="decimal">£</label><span class="eq" id="fxEq"></span></div>
   <div class="tot" id="totAll"></div>
   <div class="inv" id="invBox"><span>📈 XTB</span><label class="xl"><input id="xtbA" inputmode="decimal">€</label><b id="xtbEq"></b></div>
   <div class="tot" id="invDep"></div>
   <div class="card fixed" id="fixed"></div>
+  <h2>🎯 Obiective</h2><div class="card" id="goals"></div>
 </section>
 
 <section class="tab" id="t-list">
   <div class="phead"><h1>Tranzacții</h1></div>
   <div class="mslot" data-slot="list"><div class="chips" id="months"></div></div>
+  <div class="srch"><input id="q" type="search" placeholder="🔍 Caută (text, categorie, sumă)" autocomplete="off"></div>
+  <div class="shint" id="qInfo" style="margin:6px 4px 0"></div>
   <h2 id="listTitle">Tranzacții</h2>
   <div id="list"></div>
 </section>
@@ -272,11 +340,16 @@ body.t-home .fab2{display:block}
 <section class="tab" id="t-stats">
   <div class="phead"><h1>Statistici</h1></div>
   <div class="mslot" data-slot="stats"></div>
+  <div id="report"></div>
+  <div id="charts"></div>
+  <div id="budgets"></div>
   <div id="incWrap"><h2>Venituri</h2><div class="inc-tiles" id="incTiles"></div></div>
   <h2>Cheltuieli pe categorii</h2>
   <div class="cats" id="cats"></div>
   <h2 id="mTitle">Evoluție lunară</h2>
   <div class="card months" id="monthBars"></div>
+  <div id="tipsBox"></div>
+  <div id="trading"></div>
 </section>
 
 <section class="tab" id="t-set">
@@ -287,6 +360,14 @@ body.t-home .fab2{display:block}
 <button data-th="stone"><i style="background:url(stone.jpg) 70% 35%/220%"></i>Piatră</button>
 <button data-th="blue"><i style="background:linear-gradient(160deg,#3b82f6,#1e293b)"></i>Albastru</button>
 <button data-th="neon"><i style="background:linear-gradient(135deg,#7c5cff,#ff5ca8)"></i>Neon</button></div></div>
+  <h2>💰 Buget lunar pe categorii</h2>
+  <div class="card setc" id="budEdit"></div>
+  <h2>🏦 Economisire</h2>
+  <div class="card setc"><label class="srow">Vreau să economisesc lunar<span><input id="saveT" inputmode="decimal" placeholder="0"> lei</span></label><div class="shint">Se scade din „Poți cheltui azi”.</div></div>
+  <h2>🔒 Securitate</h2>
+  <div class="card setc" id="pinBox"></div>
+  <h2>☁️ Sincronizare</h2>
+  <div class="card setc" id="syncBox"></div>
   <h2>💾 Backup</h2>
   <div class="card setc">
     <button class="sbtn" id="bkExp">⬆️ Exportă datele (fișier .json)</button>
@@ -321,8 +402,11 @@ body.t-home .fab2{display:block}
   <div class="lab">Când</div>
   <div class="dates"><span class="chip" data-dd="0">Azi</span><span class="chip" data-dd="1">Ieri</span><input type="date" id="fd"></div>
   <button class="save" id="saveBtn" disabled>Adaugă</button>
+  <button class="sdel" id="sDel">Șterge tranzacția</button>
 </div>
 <div class="msg" id="msg"></div>
+<div class="lock" id="lock"><div class="lk-t" id="lkT">Introdu PIN-ul</div><div class="lk-d" id="lkD"></div>
+<div class="lk-k"><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="x" class="lk-c" id="lkC">Anulează</button><button data-k="0">0</button><button data-k="b">⌫</button></div></div>
 <script type="application/json" id="data">{"items": [{"d": "2026-11-13", "t": "Anvelope", "c": "Transport & mașină", "s": 825}, {"d": "2026-06-02", "t": "Unghii", "c": "Îngrijire & beauty", "s": 300}, {"d": "2026-06-02", "t": "Spălat adidași", "c": "Haine & încălțăminte", "s": 100}, {"d": "2026-06-02", "t": "eMAG (filtru apă)", "c": "Diverse", "s": 150}, {"d": "2026-06-03", "t": "Pantaloni", "c": "Haine & încălțăminte", "s": 90}, {"d": "2026-06-04", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-06-04", "t": "Medical ginecolog", "c": "Sănătate", "s": 600}, {"d": "2026-06-04", "t": "Market", "c": "Alimente & cumpărături", "s": 80}, {"d": "2026-06-04", "t": "Cazare Airbnb", "c": "Ieșiri & călătorii", "s": 650}, {"d": "2026-06-05", "t": "Party burlacite", "c": "Ieșiri & călătorii", "s": 900}, {"d": "2026-06-05", "t": "București", "c": "Ieșiri & călătorii", "s": 3100}, {"d": "2026-06-06", "t": "Rată TBI", "c": "Rate & credite", "s": 1500}, {"d": "2026-06-06", "t": "Investiție XTB", "c": "XTB", "s": 500, "k": "inv"}, {"d": "2026-06-07", "t": "Shaorma + suc + înghețată", "c": "Mâncare în oraș", "s": 70}, {"d": "2026-06-11", "t": "Cheltuieli diverse", "c": "Diverse", "s": 75}, {"d": "2026-06-14", "t": "Filtre apă", "c": "Diverse", "s": 140}, {"d": "2026-06-14", "t": "Rovi", "c": "Diverse", "s": 350}, {"d": "2026-06-15", "t": "Shaorma", "c": "Mâncare în oraș", "s": 50}, {"d": "2026-06-16", "t": "Takko, Lidl, Pepco", "c": "Alimente & cumpărături", "s": 260}, {"d": "2026-06-17", "t": "Adidași", "c": "Haine & încălțăminte", "s": 415}, {"d": "2026-06-17", "t": "Sandale", "c": "Haine & încălțăminte", "s": 330}, {"d": "2026-06-18", "t": "Penny", "c": "Alimente & cumpărături", "s": 115}, {"d": "2026-06-19", "t": "Ciorapi Nike", "c": "Haine & încălțăminte", "s": 100}, {"d": "2026-06-20", "t": "Tuns", "c": "Îngrijire & beauty", "s": 75}, {"d": "2026-06-20", "t": "Piscină", "c": "Ieșiri & călătorii", "s": 300}, {"d": "2026-06-24", "t": "Unghii", "c": "Îngrijire & beauty", "s": 270}, {"d": "2026-06-24", "t": "Rochiță", "c": "Haine & încălțăminte", "s": 335}, {"d": "2026-06-24", "t": "Tuns Upi", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-06-24", "t": "Dr Max", "c": "Sănătate", "s": 150}, {"d": "2026-06-24", "t": "Telekom", "c": "Facturi & abonamente", "s": 60}, {"d": "2026-06-24", "t": "Dr Max", "c": "Sănătate", "s": 35}, {"d": "2026-06-28", "t": "Piscină", "c": "Ieșiri & călătorii", "s": 260}, {"d": "2026-06-28", "t": "Pensat + dm", "c": "Îngrijire & beauty", "s": 110}, {"d": "2026-06-28", "t": "H&M", "c": "Haine & încălțăminte", "s": 180}, {"d": "2026-06-28", "t": "Notino (șampoane)", "c": "Îngrijire & beauty", "s": 143}, {"d": "2026-06-30", "t": "Cadouri Matei", "c": "Cadouri & familie", "s": 220}, {"d": "2026-06-30", "t": "Parfumuri", "c": "Îngrijire & beauty", "s": 356}, {"d": "2026-07-02", "t": "Shaorma", "c": "Mâncare în oraș", "s": 90}, {"d": "2026-07-02", "t": "Notino", "c": "Îngrijire & beauty", "s": 168}, {"d": "2026-07-02", "t": "Cadou Vladi", "c": "Cadouri & familie", "s": 350}, {"d": "2026-07-02", "t": "Shein", "c": "Haine & încălțăminte", "s": 420}, {"d": "2026-07-03", "t": "Croitor", "c": "Haine & încălțăminte", "s": 30}, {"d": "2026-07-04", "t": "Taxi", "c": "Transport & mașină", "s": 60}, {"d": "2026-07-04", "t": "Make-up", "c": "Îngrijire & beauty", "s": 400}, {"d": "2026-07-04", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-07-04", "t": "Buchet", "c": "Cadouri & familie", "s": 250}, {"d": "2026-07-04", "t": "Cămăși", "c": "Haine & încălțăminte", "s": 200}, {"d": "2026-07-04", "t": "ING", "c": "Rate & credite", "s": 250}, {"d": "2026-07-04", "t": "Tips", "c": "Diverse", "s": 100}, {"d": "2026-07-05", "t": "Glovo", "c": "Mâncare în oraș", "s": 324}, {"d": "2026-07-06", "t": "Magazin", "c": "Alimente & cumpărături", "s": 60}, {"d": "2026-07-07", "t": "Curier retur", "c": "Diverse", "s": 40}, {"d": "2026-07-08", "t": "Dr Max", "c": "Sănătate", "s": 105}, {"d": "2026-07-08", "t": "Lidl", "c": "Alimente & cumpărături", "s": 200}, {"d": "2026-07-09", "t": "Pizza", "c": "Mâncare în oraș", "s": 100}, {"d": "2026-07-09", "t": "Papy", "c": "Mâncare în oraș", "s": 16}, {"d": "2026-07-10", "t": "Boxeri, ciorapi", "c": "Haine & încălțăminte", "s": 400}, {"d": "2026-07-10", "t": "Costum Matei", "c": "Haine & încălțăminte", "s": 300}, {"d": "2026-07-10", "t": "Notino", "c": "Îngrijire & beauty", "s": 327}, {"d": "2026-07-11", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-07-11", "t": "Unghii", "c": "Îngrijire & beauty", "s": 250}, {"d": "2026-07-11", "t": "Golden", "c": "Mâncare în oraș", "s": 230}, {"d": "2026-07-11", "t": "Shaorma", "c": "Mâncare în oraș", "s": 73}, {"d": "2026-07-11", "t": "dm", "c": "Îngrijire & beauty", "s": 120}, {"d": "2026-07-11", "t": "Carrefour", "c": "Alimente & cumpărături", "s": 66}, {"d": "2026-07-11", "t": "Magazin", "c": "Alimente & cumpărături", "s": 42}, {"d": "2026-07-12", "t": "Mașină", "c": "Transport & mașină", "s": 1000}, {"d": "2026-07-12", "t": "Easybox", "c": "Diverse", "s": 15}, {"d": "2026-07-16", "t": "Alimentare", "c": "Alimente & cumpărături", "s": 500}, {"d": "2026-07-16", "t": "Oprire food", "c": "Mâncare în oraș", "s": 55}, {"d": "2026-07-16", "t": "Pepco", "c": "Haine & încălțăminte", "s": 12}, {"d": "2026-07-17", "t": "Restaurant", "c": "Mâncare în oraș", "s": 460}, {"d": "2026-07-17", "t": "Gogoși", "c": "Mâncare în oraș", "s": 40}, {"d": "2026-07-17", "t": "Cumpărături", "c": "Alimente & cumpărături", "s": 300}, {"d": "2026-07-17", "t": "Alimentare", "c": "Alimente & cumpărături", "s": 200}, {"d": "2026-07-17", "t": "McDonald's", "c": "Mâncare în oraș", "s": 100}, {"d": "2026-07-17", "t": "Matei", "c": "Cadouri & familie", "s": 185}, {"d": "2026-07-17", "t": "Masaj", "c": "Îngrijire & beauty", "s": 20}, {"d": "2026-07-24", "t": "Kaufland", "c": "Alimente & cumpărături", "s": 500}, {"d": "2026-07-26", "t": "P&B", "c": "Mâncare în oraș", "s": 140}, {"d": "2026-07-27", "t": "Lidl", "c": "Alimente & cumpărături", "s": 230}, {"d": "2026-07-27", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-07-27", "t": "Mouse", "c": "Diverse", "s": 70}, {"d": "2026-07-28", "t": "Notino", "c": "Îngrijire & beauty", "s": 250}, {"d": "2026-08-05", "t": "Lidl", "c": "Alimente & cumpărături", "s": 270}, {"d": "2026-08-07", "t": "dm", "c": "Îngrijire & beauty", "s": 111}, {"d": "2026-08-07", "t": "Uber", "c": "Transport & mașină", "s": 20}, {"d": "2026-08-07", "t": "Magazin", "c": "Alimente & cumpărături", "s": 15}, {"d": "2026-08-07", "t": "Piscină", "c": "Ieșiri & călătorii", "s": 200}, {"d": "2026-08-09", "t": "Rovi", "c": "Diverse", "s": 290}, {"d": "2026-08-09", "t": "Magazin", "c": "Alimente & cumpărături", "s": 15}, {"d": "2026-08-11", "t": "Rată TBI", "c": "Rate & credite", "s": 1500}, {"d": "2026-08-11", "t": "XTB", "c": "XTB", "s": 500, "k": "inv"}, {"d": "2026-08-11", "t": "Orange", "c": "Facturi & abonamente", "s": 50}, {"d": "2026-08-11", "t": "Soacra", "c": "Cadouri & familie", "s": 50}, {"d": "2026-08-11", "t": "Notino", "c": "Îngrijire & beauty", "s": 350}, {"d": "2026-08-12", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-08-12", "t": "ING", "c": "Rate & credite", "s": 50}, {"d": "2026-08-12", "t": "Unghii", "c": "Îngrijire & beauty", "s": 270}, {"d": "2026-08-12", "t": "Magazin", "c": "Alimente & cumpărături", "s": 50}, {"d": "2026-08-14", "t": "Restaurant", "c": "Mâncare în oraș", "s": 200}, {"d": "2026-08-14", "t": "Magazin", "c": "Alimente & cumpărături", "s": 50}, {"d": "2026-08-14", "t": "Penny", "c": "Alimente & cumpărături", "s": 200}, {"d": "2026-08-16", "t": "Shaorma", "c": "Mâncare în oraș", "s": 50}, {"d": "2026-08-21", "t": "Seara fetelor", "c": "Ieșiri & călătorii", "s": 330}, {"d": "2026-08-21", "t": "Seara băieților", "c": "Ieșiri & călătorii", "s": 160}, {"d": "2026-08-21", "t": "Croitor", "c": "Haine & încălțăminte", "s": 30}, {"d": "2026-08-21", "t": "Shein", "c": "Haine & încălțăminte", "s": 246}, {"d": "2026-08-21", "t": "Telekom", "c": "Facturi & abonamente", "s": 57}, {"d": "2026-08-21", "t": "Mama", "c": "Cadouri & familie", "s": 30}, {"d": "2026-08-21", "t": "Penny", "c": "Alimente & cumpărături", "s": 140}, {"d": "2026-08-25", "t": "Ceas", "c": "Diverse", "s": 300}, {"d": "2026-08-25", "t": "Dr Max", "c": "Sănătate", "s": 130}, {"d": "2026-08-25", "t": "Lidl + Kaufland", "c": "Alimente & cumpărături", "s": 378}, {"d": "2026-08-27", "t": "Amendă", "c": "Transport & mașină", "s": 500}, {"d": "2026-08-27", "t": "Spălătorie", "c": "Transport & mașină", "s": 50}, {"d": "2026-08-27", "t": "Uber", "c": "Transport & mașină", "s": 30}, {"d": "2026-08-28", "t": "Mama", "c": "Cadouri & familie", "s": 30}, {"d": "2026-08-28", "t": "Rovi", "c": "Diverse", "s": 140}, {"d": "2026-08-28", "t": "Glovo", "c": "Mâncare în oraș", "s": 200}, {"d": "2026-09-02", "t": "Piață", "c": "Alimente & cumpărături", "s": 410}, {"d": "2026-09-10", "t": "Piață", "c": "Alimente & cumpărături", "s": 400}, {"d": "2026-09-10", "t": "Rovi", "c": "Diverse", "s": 260}, {"d": "2026-09-11", "t": "Glovo", "c": "Mâncare în oraș", "s": 250}, {"d": "2026-09-11", "t": "ING", "c": "Rate & credite", "s": 750}, {"d": "2026-09-11", "t": "Burger", "c": "Mâncare în oraș", "s": 140}, {"d": "2026-09-16", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-09-20", "t": "Cumpărături", "c": "Alimente & cumpărături", "s": 450}, {"d": "2026-09-21", "t": "Card Avantaj", "c": "Rate & credite", "s": 200}, {"d": "2026-09-21", "t": "Factură curent", "c": "Facturi & abonamente", "s": 350}, {"d": "2026-09-21", "t": "Telekom", "c": "Facturi & abonamente", "s": 55}, {"d": "2026-09-21", "t": "Notino", "c": "Îngrijire & beauty", "s": 250}, {"d": "2026-09-21", "t": "Rovi", "c": "Diverse", "s": 100}, {"d": "2026-09-21", "t": "Shaorma", "c": "Mâncare în oraș", "s": 100}, {"d": "2026-09-21", "t": "Cadou doamna", "c": "Cadouri & familie", "s": 175}, {"d": "2026-09-30", "t": "Cont TradingView", "c": "Facturi & abonamente", "s": 230}, {"d": "2026-09-30", "t": "Blugi", "c": "Haine & încălțăminte", "s": 140}, {"d": "2026-10-04", "t": "Cumpărături", "c": "Alimente & cumpărături", "s": 404}, {"d": "2026-10-04", "t": "Orange", "c": "Facturi & abonamente", "s": 60}, {"d": "2026-10-05", "t": "Mama", "c": "Cadouri & familie", "s": 35}, {"d": "2026-10-05", "t": "Tuns", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-10-05", "t": "Farmacie", "c": "Sănătate", "s": 30}, {"d": "2026-10-08", "t": "XTB", "c": "XTB", "s": 500, "k": "inv"}, {"d": "2026-10-10", "t": "Farmacie", "c": "Sănătate", "s": 100}, {"d": "2026-10-10", "t": "Glovo", "c": "Mâncare în oraș", "s": 300}, {"d": "2026-10-12", "t": "Cadou Ana", "c": "Cadouri & familie", "s": 200}, {"d": "2026-10-12", "t": "Flori", "c": "Cadouri & familie", "s": 85}, {"d": "2026-10-12", "t": "Gene", "c": "Îngrijire & beauty", "s": 230}, {"d": "2026-10-12", "t": "Uber + țigări", "c": "Transport & mașină", "s": 50}, {"d": "2026-10-12", "t": "Cafea + țigări", "c": "Mâncare în oraș", "s": 50}, {"d": "2026-10-18", "t": "Glovo", "c": "Mâncare în oraș", "s": 230}, {"d": "2026-10-20", "t": "RX dent", "c": "Sănătate", "s": 120}, {"d": "2026-10-20", "t": "Magazin", "c": "Alimente & cumpărături", "s": 70}, {"d": "2026-10-20", "t": "Dentist", "c": "Sănătate", "s": 300}, {"d": "2026-10-20", "t": "Card Avantaj", "c": "Rate & credite", "s": 200}, {"d": "2026-10-24", "t": "Cumpărături", "c": "Alimente & cumpărături", "s": 300}, {"d": "2026-10-24", "t": "Telekom", "c": "Facturi & abonamente", "s": 60}, {"d": "2026-10-24", "t": "Mama", "c": "Cadouri & familie", "s": 100}, {"d": "2026-10-26", "t": "Pizza", "c": "Mâncare în oraș", "s": 55}, {"d": "2026-10-26", "t": "Magazin", "c": "Alimente & cumpărături", "s": 60}, {"d": "2026-10-26", "t": "Dr Max", "c": "Sănătate", "s": 135}, {"d": "2026-10-28", "t": "Tuns", "c": "Îngrijire & beauty", "s": 115}, {"d": "2026-10-28", "t": "Tuns eu", "c": "Îngrijire & beauty", "s": 150}, {"d": "2026-10-28", "t": "Cumpărături", "c": "Alimente & cumpărături", "s": 30}, {"d": "2026-11-03", "t": "Glovo", "c": "Mâncare în oraș", "s": 200}, {"d": "2026-11-05", "t": "Transport București", "c": "Transport & mașină", "s": 80}, {"d": "2026-11-05", "t": "Uber București", "c": "Transport & mașină", "s": 60}, {"d": "2026-11-05", "t": "Service tips", "c": "Transport & mașină", "s": 50}, {"d": "2026-11-05", "t": "Alimentare", "c": "Alimente & cumpărături", "s": 550}, {"d": "2026-11-05", "t": "Telekom", "c": "Facturi & abonamente", "s": 50, "ts": 1794575236343}, {"d": "2026-11-09", "t": "Drum Voluntari + McDonald's", "c": "Transport & mașină", "s": 140}, {"d": "2026-11-09", "t": "ITP", "c": "Transport & mașină", "s": 250}, {"d": "2026-11-11", "t": "Reparație pană", "c": "Transport & mașină", "s": 100}, {"d": "2026-11-11", "t": "Digi", "c": "Facturi & abonamente", "s": 200}, {"d": "2026-11-11", "t": "dm", "c": "Îngrijire & beauty", "s": 65}, {"d": "2026-11-11", "t": "Apă", "c": "Facturi & abonamente", "s": 180}, {"d": "2026-11-11", "t": "Gaze", "c": "Facturi & abonamente", "s": 80}, {"d": "2026-11-11", "t": "Orange", "c": "Facturi & abonamente", "s": 50}, {"d": "2026-01-08", "t": "Tips", "c": "Tips", "s": 160, "v": 1}, {"d": "2026-01-10", "t": "Tips", "c": "Tips", "s": 225, "v": 1}, {"d": "2026-01-12", "t": "Tips", "c": "Tips", "s": 65, "v": 1}, {"d": "2026-01-14", "t": "Tips", "c": "Tips", "s": 125, "v": 1}, {"d": "2026-01-16", "t": "Tips", "c": "Tips", "s": 200, "v": 1}, {"d": "2026-01-20", "t": "Tips", "c": "Tips", "s": 150, "v": 1}, {"d": "2026-01-22", "t": "Tips", "c": "Tips", "s": 120, "v": 1}, {"d": "2026-01-24", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-01-26", "t": "Tips", "c": "Tips", "s": 120, "v": 1}, {"d": "2026-01-28", "t": "Tips", "c": "Tips", "s": 385, "v": 1}, {"d": "2026-01-30", "t": "Tips", "c": "Tips", "s": 235, "v": 1}, {"d": "2026-02-03", "t": "Tips", "c": "Tips", "s": 130, "v": 1}, {"d": "2026-02-05", "t": "Tips", "c": "Tips", "s": 191, "v": 1}, {"d": "2026-02-07", "t": "Tips", "c": "Tips", "s": 475, "v": 1}, {"d": "2026-02-09", "t": "Tips", "c": "Tips", "s": 150, "v": 1}, {"d": "2026-02-09", "t": "Salariu", "c": "Salariu", "s": 4400, "v": 1}, {"d": "2026-02-11", "t": "Tips", "c": "Tips", "s": 220, "v": 1}, {"d": "2026-02-13", "t": "Tips", "c": "Tips", "s": 240, "v": 1}, {"d": "2026-02-14", "t": "Tips", "c": "Tips", "s": 210, "v": 1}, {"d": "2026-02-17", "t": "Tips", "c": "Tips", "s": 205, "v": 1}, {"d": "2026-02-19", "t": "Tips", "c": "Tips", "s": 160, "v": 1}, {"d": "2026-02-21", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-02-23", "t": "Tips", "c": "Tips", "s": 70, "v": 1}, {"d": "2026-02-25", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-02-27", "t": "Tips", "c": "Tips", "s": 425, "v": 1}, {"d": "2026-02-28", "t": "Tips", "c": "Tips", "s": 250, "v": 1}, {"d": "2026-03-01", "t": "Tips", "c": "Tips", "s": 320, "v": 1}, {"d": "2026-03-03", "t": "Tips", "c": "Tips", "s": 345, "v": 1}, {"d": "2026-03-05", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-03-07", "t": "Tips", "c": "Tips", "s": 450, "v": 1}, {"d": "2026-03-08", "t": "Tips", "c": "Tips", "s": 200, "v": 1}, {"d": "2026-03-09", "t": "Tips", "c": "Tips", "s": 140, "v": 1}, {"d": "2026-03-11", "t": "Salariu", "c": "Salariu", "s": 6400, "v": 1}, {"d": "2026-03-11", "t": "Tips", "c": "Tips", "s": 168, "v": 1}, {"d": "2026-03-13", "t": "Tips", "c": "Tips", "s": 580, "v": 1}, {"d": "2026-03-15", "t": "Tips", "c": "Tips", "s": 127, "v": 1}, {"d": "2026-03-17", "t": "Tips", "c": "Tips", "s": 235, "v": 1}, {"d": "2026-03-19", "t": "Tips", "c": "Tips", "s": 185, "v": 1}, {"d": "2026-03-21", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-03-22", "t": "Tips", "c": "Tips", "s": 30, "v": 1}, {"d": "2026-03-23", "t": "Tips", "c": "Tips", "s": 170, "v": 1}, {"d": "2026-03-25", "t": "Tips", "c": "Tips", "s": 360, "v": 1}, {"d": "2026-03-27", "t": "Tips", "c": "Tips", "s": 255, "v": 1}, {"d": "2026-03-29", "t": "Tips", "c": "Tips", "s": 245, "v": 1}, {"d": "2026-03-31", "t": "Tips", "c": "Tips", "s": 155, "v": 1}, {"d": "2026-04-02", "t": "Tips", "c": "Tips", "s": 298, "v": 1}, {"d": "2026-04-04", "t": "Tips", "c": "Tips", "s": 500, "v": 1}, {"d": "2026-04-06", "t": "Tips", "c": "Tips", "s": 333, "v": 1}, {"d": "2026-04-08", "t": "Tips", "c": "Tips", "s": 160, "v": 1}, {"d": "2026-04-10", "t": "Tips", "c": "Tips", "s": 615, "v": 1}, {"d": "2026-04-10", "t": "Salariu", "c": "Salariu", "s": 6700, "v": 1}, {"d": "2026-04-14", "t": "Tips", "c": "Tips", "s": 160, "v": 1}, {"d": "2026-04-16", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-04-18", "t": "Tips", "c": "Tips", "s": 500, "v": 1}, {"d": "2026-04-20", "t": "Tips", "c": "Tips", "s": 260, "v": 1}, {"d": "2026-04-22", "t": "Tips", "c": "Tips", "s": 265, "v": 1}, {"d": "2026-04-24", "t": "Tips", "c": "Tips", "s": 640, "v": 1}, {"d": "2026-04-25", "t": "Tips", "c": "Tips", "s": 280, "v": 1}, {"d": "2026-04-26", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-04-28", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-04-30", "t": "Tips", "c": "Tips", "s": 530, "v": 1}, {"d": "2026-05-02", "t": "Tips", "c": "Tips", "s": 432, "v": 1}, {"d": "2026-05-04", "t": "Tips", "c": "Tips", "s": 92, "v": 1}, {"d": "2026-05-06", "t": "Tips", "c": "Tips", "s": 500, "v": 1}, {"d": "2026-05-08", "t": "Tips", "c": "Tips", "s": 410, "v": 1}, {"d": "2026-05-09", "t": "Tips", "c": "Tips", "s": 100, "v": 1}, {"d": "2026-05-10", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-05-10", "t": "Salariu", "c": "Salariu", "s": 6650, "v": 1}, {"d": "2026-05-12", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-05-14", "t": "Tips", "c": "Tips", "s": 370, "v": 1}, {"d": "2026-05-16", "t": "Tips", "c": "Tips", "s": 530, "v": 1}, {"d": "2026-05-18", "t": "Tips", "c": "Tips", "s": 165, "v": 1}, {"d": "2026-05-20", "t": "Tips", "c": "Tips", "s": 485, "v": 1}, {"d": "2026-05-22", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-05-24", "t": "Tips", "c": "Tips", "s": 430, "v": 1}, {"d": "2026-05-26", "t": "Tips", "c": "Tips", "s": 450, "v": 1}, {"d": "2026-05-28", "t": "Tips", "c": "Tips", "s": 250, "v": 1}, {"d": "2026-05-30", "t": "Tips", "c": "Tips", "s": 570, "v": 1}, {"d": "2026-06-01", "t": "Tips", "c": "Tips", "s": 450, "v": 1}, {"d": "2026-06-03", "t": "Tips", "c": "Tips", "s": 220, "v": 1}, {"d": "2026-06-09", "t": "Tips", "c": "Tips", "s": 380, "v": 1}, {"d": "2026-06-10", "t": "Salariu", "c": "Salariu", "s": 7000, "v": 1}, {"d": "2026-06-11", "t": "Tips", "c": "Tips", "s": 750, "v": 1}, {"d": "2026-06-12", "t": "Tips", "c": "Tips", "s": 230, "v": 1}, {"d": "2026-06-13", "t": "Tips", "c": "Tips", "s": 700, "v": 1}, {"d": "2026-06-15", "t": "Tips", "c": "Tips", "s": 456, "v": 1}, {"d": "2026-06-17", "t": "Tips", "c": "Tips", "s": 460, "v": 1}, {"d": "2026-06-18", "t": "Tips", "c": "Tips", "s": 165, "v": 1}, {"d": "2026-06-19", "t": "Tips", "c": "Tips", "s": 800, "v": 1}, {"d": "2026-06-21", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-06-23", "t": "Tips", "c": "Tips", "s": 370, "v": 1}, {"d": "2026-06-25", "t": "Tips", "c": "Tips", "s": 825, "v": 1}, {"d": "2026-06-27", "t": "Tips", "c": "Tips", "s": 830, "v": 1}, {"d": "2026-06-29", "t": "Tips", "c": "Tips", "s": 510, "v": 1}, {"d": "2026-07-01", "t": "Tips", "c": "Tips", "s": 465, "v": 1}, {"d": "2026-07-03", "t": "Tips", "c": "Tips", "s": 630, "v": 1}, {"d": "2026-07-07", "t": "Tips", "c": "Tips", "s": 520, "v": 1}, {"d": "2026-07-09", "t": "Tips", "c": "Tips", "s": 250, "v": 1}, {"d": "2026-07-10", "t": "Salariu", "c": "Salariu", "s": 7000, "v": 1}, {"d": "2026-07-11", "t": "Tips", "c": "Tips", "s": 604, "v": 1}, {"d": "2026-07-13", "t": "Tips", "c": "Tips", "s": 260, "v": 1}, {"d": "2026-07-15", "t": "Tips", "c": "Tips", "s": 500, "v": 1}, {"d": "2026-07-21", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-07-23", "t": "Tips", "c": "Tips", "s": 525, "v": 1}, {"d": "2026-07-25", "t": "Tips", "c": "Tips", "s": 775, "v": 1}, {"d": "2026-07-27", "t": "Tips", "c": "Tips", "s": 425, "v": 1}, {"d": "2026-07-29", "t": "Tips", "c": "Tips", "s": 331, "v": 1}, {"d": "2026-07-30", "t": "Tips", "c": "Tips", "s": 320, "v": 1}, {"d": "2026-07-31", "t": "Tips", "c": "Tips", "s": 160, "v": 1}, {"d": "2026-08-01", "t": "Tips", "c": "Tips", "s": 380, "v": 1}, {"d": "2026-08-02", "t": "Tips", "c": "Tips", "s": 670, "v": 1}, {"d": "2026-08-04", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-08-06", "t": "Tips", "c": "Tips", "s": 440, "v": 1}, {"d": "2026-08-08", "t": "Tips", "c": "Tips", "s": 270, "v": 1}, {"d": "2026-08-10", "t": "Tips", "c": "Tips", "s": 560, "v": 1}, {"d": "2026-08-10", "t": "Salariu", "c": "Salariu", "s": 7000, "v": 1}, {"d": "2026-08-12", "t": "Tips", "c": "Tips", "s": 420, "v": 1}, {"d": "2026-08-14", "t": "Tips", "c": "Tips", "s": 460, "v": 1}, {"d": "2026-08-16", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-08-18", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-08-20", "t": "Tips", "c": "Tips", "s": 600, "v": 1}, {"d": "2026-08-22", "t": "Tips", "c": "Tips", "s": 700, "v": 1}, {"d": "2026-08-24", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-08-26", "t": "Tips", "c": "Tips", "s": 540, "v": 1}, {"d": "2026-08-28", "t": "Tips", "c": "Tips", "s": 480, "v": 1}, {"d": "2026-08-29", "t": "Tips", "c": "Tips", "s": 190, "v": 1}, {"d": "2026-08-30", "t": "Tips", "c": "Tips", "s": 750, "v": 1}, {"d": "2026-08-31", "t": "Tips", "c": "Tips", "s": 100, "v": 1}, {"d": "2026-09-01", "t": "Tips", "c": "Tips", "s": 460, "v": 1}, {"d": "2026-09-10", "t": "Salariu", "c": "Salariu", "s": 7250, "v": 1}, {"d": "2026-09-11", "t": "Tips", "c": "Tips", "s": 570, "v": 1}, {"d": "2026-09-13", "t": "Tips", "c": "Tips", "s": 470, "v": 1}, {"d": "2026-09-15", "t": "Tips", "c": "Tips", "s": 445, "v": 1}, {"d": "2026-09-17", "t": "Tips", "c": "Tips", "s": 450, "v": 1}, {"d": "2026-09-19", "t": "Tips", "c": "Tips", "s": 950, "v": 1}, {"d": "2026-09-21", "t": "Tips", "c": "Tips", "s": 270, "v": 1}, {"d": "2026-09-23", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-09-25", "t": "Tips", "c": "Tips", "s": 442, "v": 1}, {"d": "2026-09-27", "t": "Tips", "c": "Tips", "s": 410, "v": 1}, {"d": "2026-09-29", "t": "Tips", "c": "Tips", "s": 100, "v": 1}, {"d": "2026-10-01", "t": "Tips", "c": "Tips", "s": 360, "v": 1}, {"d": "2026-10-03", "t": "Tips", "c": "Tips", "s": 620, "v": 1}, {"d": "2026-10-05", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-10-07", "t": "Tips", "c": "Tips", "s": 391, "v": 1}, {"d": "2026-10-09", "t": "Tips", "c": "Tips", "s": 60, "v": 1}, {"d": "2026-10-10", "t": "Tips", "c": "Tips", "s": 330, "v": 1}, {"d": "2026-10-10", "t": "Salariu", "c": "Salariu", "s": 7250, "v": 1}, {"d": "2026-10-11", "t": "Tips", "c": "Tips", "s": 350, "v": 1}, {"d": "2026-10-13", "t": "Tips", "c": "Tips", "s": 222, "v": 1}, {"d": "2026-10-15", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-10-17", "t": "Tips", "c": "Tips", "s": 380, "v": 1}, {"d": "2026-10-19", "t": "Tips", "c": "Tips", "s": 101, "v": 1}, {"d": "2026-10-21", "t": "Tips", "c": "Tips", "s": 435, "v": 1}, {"d": "2026-10-23", "t": "Tips", "c": "Tips", "s": 185, "v": 1}, {"d": "2026-10-29", "t": "Tips", "c": "Tips", "s": 460, "v": 1}, {"d": "2026-10-31", "t": "Tips", "c": "Tips", "s": 400, "v": 1}, {"d": "2026-11-02", "t": "Tips", "c": "Tips", "s": 200, "v": 1}, {"d": "2026-11-04", "t": "Tips", "c": "Tips", "s": 170, "v": 1}, {"d": "2026-11-06", "t": "Tips", "c": "Tips", "s": 300, "v": 1}, {"d": "2026-11-10", "t": "Tips", "c": "Tips", "s": 140, "v": 1}, {"d": "2026-11-10", "t": "Salariu", "c": "Salariu", "s": 7250, "v": 1}, {"d": "2026-11-12", "t": "Tips", "c": "Tips", "s": 406, "v": 1}], "checks": [{"d": "2026-11-13", "ts": 1794573780000, "s": 14670}], "fx": {"EUR": {"a": 160, "r": 5.2337}, "GBP": {"a": 10, "r": 6.1421}}, "xtb": {"a": 516}, "fixed": [{"n": "Card Avantaj", "s": 200, "c": "Rate & credite", "k": ["avantaj"]}, {"n": "TBI", "s": 1084, "c": "Rate & credite", "k": ["tbi"]}, {"n": "Banca Transilvania", "s": 541, "c": "Rate & credite", "k": ["bt", "banca transilvania"]}, {"n": "Digi", "s": 150, "c": "Facturi & abonamente", "k": ["digi"]}, {"n": "Telekom", "s": 50, "c": "Facturi & abonamente", "k": ["telekom"]}, {"n": "Orange", "s": 50, "c": "Facturi & abonamente", "k": ["orange"]}, {"n": "Combustibil", "s": 0, "c": "Transport & mașină", "k": ["combustibil", "benzin", "motorin", "carburant", "petrom", "omv", "rompetrol", "lukoil", "mol", "alimentat"]}], "theme": "stone"}</script>
 <script>
 const CATS = {
@@ -442,7 +526,7 @@ function render(){
     return `<div class="m ${selMonth!=='all'&&k!==selMonth?'dim':''}" data-m="${k}"><span>${mName(k)}</span><span>${showE?`<span class="t" style="display:block"><i style="width:${v/mx*100}%${col?';background:'+col:''}"></i></span>`:''}${showI?`<span class="t2" style="display:block${isIn?';height:12px':''}"><i style="width:${w/mx*100}%"></i></span>`:''}</span><span class="a">${fmt(isIn?w:v)}${right}</span></div>`}).join('')
     +(hasInc&&!selCat?'<div class="c" style="font-size:11px;color:var(--mut);margin-top:6px">Bara colorată = cheltuieli · verde = venituri · dreapta: sold</div>':'');
   // list
-  const list=inM.filter(match);
+  const list=srch(inM).filter(match);
   $('listTitle').innerHTML='Tranzacții'+(selCat?`<span class="filter" id="clr">${(isIn?INC[cName]:CATS[cName]).e} ${esc(cName)} ✕</span>`:'');
   let html='';
   const byDay={};list.forEach(x=>(byDay[x.d]=byDay[x.d]||[]).push(x));
@@ -452,7 +536,7 @@ function render(){
     const de=sum(byDay[d].filter(E)), di=sum(byDay[d].filter(x=>x.v));
     html+=`<div class="day"><span>${lbl}</span><span>${di?`<span style="color:#4ade80">+${fmt(di)}</span>${de?' · ':''}`:''}${de?'−'+fmt(de):''} lei</span></div>`;
     byDay[d].forEach(x=>{const k=catOf(x);const i=data.indexOf(x);
-      html+=`<div class="row"><div class="ic" style="background:${tint(k.c,.22)}">${k.e}</div><div class="mid"><div class="t">${esc(x.t)}</div><div class="c">${esc(x.c)}</div></div><div class="s ${x.v?'inc':IV(x)?'invs':''}">${x.v?'+':IV(x)?'→ ':''}${fmt(x.s)} lei</div><button class="x" data-del="${i}" aria-label="Șterge">×</button></div>`});
+      html+=`<div class="row" data-ed="${i}"><div class="ic" style="background:${tint(k.c,.22)}">${k.e}</div><div class="mid"><div class="t">${esc(x.t)}</div><div class="c">${esc(x.c)}</div></div><div class="s ${x.v?'inc':IV(x)?'invs':''}">${x.v?'+':IV(x)?'→ ':''}${fmt(x.s)} lei</div><button class="x" data-del="${i}" aria-label="Șterge">×</button></div>`});
   });
   $('list').innerHTML=html||'<div class="empty">Nicio tranzacție</div>';
 }
@@ -498,9 +582,9 @@ function drawType(){document.querySelectorAll('[data-ty]').forEach(e=>e.classLis
 let mode='add';
 function check(){const v=parseFloat($('fs').value.replace(',','.'));$('saveBtn').disabled=mode==='check'?!(v>=0&&$('fs').value!==''):!(v>0&&$('ft').value.trim()&&fCat)}
 function setDate(v){$('fd').value=v;document.querySelectorAll('[data-dd]').forEach(e=>e.classList.toggle('on',today(+e.dataset.dd)===v))}
-function openSheet(){mode='add';$('sheet').classList.remove('quick','check');fType=0;fCat=null;catTouched=false;$('fs').value='';$('ft').value='';setDate(today());drawType();drawPick();drawSugg();check();document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
-function openTips(){mode='add';$('sheet').classList.remove('check');$('qt').textContent='💵 Tips';fType=1;fCat='Tips';catTouched=true;$('fs').value='';$('ft').value='Tips';setDate(today());drawType();$('saveBtn').textContent='Adaugă tips';drawPick();check();$('sheet').classList.add('quick');document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
-function openCheck(){mode='check';$('sheet').classList.remove('quick');$('sheet').classList.add('check');$('qt').textContent='Câți bani ai acum? (cash + card)';$('fs').value='';$('saveBtn').classList.remove('i','v');$('saveBtn').textContent='Salvează soldul real';check();document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
+function openSheet(){mode='add';$('sheet').classList.remove('edit','quick','check');fType=0;fCat=null;catTouched=false;$('fs').value='';$('ft').value='';setDate(today());drawType();drawPick();drawSugg();check();document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
+function openTips(){mode='add';$('sheet').classList.remove('edit','check');$('qt').textContent='💵 Tips';fType=1;fCat='Tips';catTouched=true;$('fs').value='';$('ft').value='Tips';setDate(today());drawType();$('saveBtn').textContent='Adaugă tips';drawPick();check();$('sheet').classList.add('quick');document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
+function openCheck(){mode='check';$('sheet').classList.remove('edit','quick');$('sheet').classList.add('check');$('qt').textContent='Câți bani ai acum? (cash + card)';$('fs').value='';$('saveBtn').classList.remove('i','v');$('saveBtn').textContent='Salvează soldul real';check();document.body.classList.add('open');setTimeout(()=>$('fs').focus(),250)}
 function closeSheet(){document.body.classList.remove('open');document.activeElement&&document.activeElement.blur()}
 
 document.querySelectorAll('[data-th]').forEach(b=>b.onclick=e=>{e.stopPropagation();store.theme=b.dataset.th;applyTheme(store.theme);save();toast('Tema: '+b.textContent.trim())});
@@ -517,11 +601,11 @@ $('saveBtn').onclick=()=>{
   if(mode==='check'){const ev=expected();checks.push({d:today(),ts:Date.now(),s,e:ev});closeSheet();render();save();
     const df=ev==null?0:Math.round(s-ev);toast(df===0?'✓ Totul se potrivește':(df<0?'Neînregistrat: −':'În plus: +')+fmt(Math.abs(df))+' lei');return}
   const e={d:$('fd').value,t:$('ft').value.trim(),c:fCat,s,ts:Date.now()};if(fType===1)e.v=1;if(fType===2)e.k='inv';
-  data.push(e);
-  closeSheet();selMonth=mKey(e.d);selCat=null;render();save();toast((fCat==='Tips'?'✓ Tips +':fType===2?'✓ Investit ':fType?'✓ Venit +':'✓ Adăugat ')+fmt(s)+' lei');
+  if(mode==='edit'){data[editIdx]=Object.assign({},e,{ts:data[editIdx].ts||e.ts})}else data.push(e);
+  const wasEdit=mode==='edit';closeSheet();selMonth=mKey(e.d);selCat=null;render();save();toast((fCat==='Tips'?'✓ Tips +':fType===2?'✓ Investit ':fType?'✓ Venit +':'✓ Adăugat ')+fmt(s)+' lei');afterAdd(e,wasEdit);
 };
 
-function snap(){return {items:data,checks,fx,xtb,fixed,theme:store.theme}}
+function snap(){store.items=data;return store}
 function save(){try{localStorage.setItem(LSKEY,JSON.stringify(snap()))}catch(e){toast('Nu s-a putut salva')}}
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-m],[data-c],[data-del],[data-pc],[data-sg],[data-dd],[data-ty],[data-fd],[data-fp],#clr,#fxEdit,#nfAdd');
@@ -545,8 +629,11 @@ document.addEventListener('click',e=>{
 });
 
 render();
-// ---- app shell ----
-let curTab='home';
+// ================= app shell =================
+var curTab='home', editIdx=-1, chartM=null;
+CATS["Trading & prop"]={e:"📊",c:"#06b6d4",k:["ftmo","challenge","prop firm","fundednext","the5ers","evaluare cont"]};
+if(!store.budgets)store.budgets={};
+if(!store.goals)store.goals=[];
 function go(t){curTab=t;document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='t-'+t));
   document.querySelectorAll('[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===t));
   document.body.classList.toggle('t-home',t==='home');
@@ -554,25 +641,250 @@ function go(t){curTab=t;document.querySelectorAll('.tab').forEach(s=>s.classList
   window.scrollTo(0,0);try{sessionStorage.setItem('tab',t)}catch(e){}}
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 try{go(sessionStorage.getItem('tab')||'home')}catch(e){go('home')}
-function bkInfo(){$('bkInfo').innerHTML=`<b>${data.length}</b> tranzacții salvate pe acest telefon. Fă un export din când în când, ca să ai o copie de siguranță.`;
+const dim=k=>new Date(+k.slice(0,4),+k.slice(5,7),0).getDate();
+const prevKey=k=>{const d=new Date(+k.slice(0,4),+k.slice(5,7)-2,1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')};
+const inMonth=k=>data.filter(x=>mKey(x.d)===k);
+const pct=(a,b)=>b>0?Math.round(a/b*100):0;
+const num=v=>{const n=parseFloat(String(v).replace(',','.'));return isFinite(n)?n:NaN};
+const repM=()=>selMonth==='all'?mKey(today()):selMonth;
+
+// ================= 1. edit =================
+function openEdit(i){const x=data[i];if(!x)return;
+  openSheet();mode='edit';editIdx=i;$('sheet').classList.add('edit');
+  fType=IV(x)?2:x.v?1:0;$('fs').value=x.s;$('ft').value=x.t;setDate(x.d);
+  drawType();fCat=x.c;catTouched=true;drawPick();drawSugg();check();
+  $('saveBtn').textContent='Salvează modificarea';$('fs').blur()}
+document.addEventListener('click',e=>{const r=e.target.closest('[data-ed]');if(!r||e.target.closest('.x'))return;openEdit(+r.dataset.ed)});
+$('sDel').onclick=()=>{const b=$('sDel');
+  if(!b.dataset.armed){b.dataset.armed=1;b.textContent='Apasă din nou pentru ștergere';setTimeout(()=>{delete b.dataset.armed;b.textContent='Șterge tranzacția'},2500);return}
+  delete b.dataset.armed;b.textContent='Șterge tranzacția';const x=data[editIdx];data.splice(editIdx,1);closeSheet();render();save();toast('Șters: '+x.t)};
+function afterAdd(e,wasEdit){if(wasEdit)toast('✓ Modificat');
+  if(E(e)&&store.budgets[e.c]){const k=mKey(e.d),lim=store.budgets[e.c],sp=sum(inMonth(k).filter(x=>E(x)&&x.c===e.c)),p=pct(sp,lim);
+    if(p>=100)setTimeout(()=>toast('⚠️ '+e.c+': buget depășit ('+fmt(sp)+' / '+fmt(lim)+')'),1700);
+    else if(p>=80)setTimeout(()=>toast('⚠️ '+e.c+': '+p+'% din buget'),1700)}}
+
+// ================= 2. search =================
+function Q(){const q=$('q');return q?q.value.trim().toLowerCase():''}
+function srch(arr){const q=Q();if(!q){$('qInfo')&&($('qInfo').textContent='');return arr}
+  const n=num(q);
+  const r=data.filter(x=>x.t.toLowerCase().includes(q)||String(x.c).toLowerCase().includes(q)||(isFinite(n)&&Math.abs(x.s-n)<0.01));
+  $('qInfo').innerHTML=`<b>${r.length}</b> rezultate în toate lunile · cheltuieli <b>${fmt(sum(r.filter(E)))}</b> lei${r.some(x=>x.v)?` · venituri <b>${fmt(sum(r.filter(x=>x.v)))}</b> lei`:''}`;
+  return r}
+$('q').addEventListener('input',()=>render());
+
+// ================= 3. backup reminder =================
+function renderBk(){const lb=store.lastBackup;const days=lb?Math.floor((new Date(today())-new Date(lb))/864e5):null;
+  $('bkWarn').innerHTML=(days===null||days>=7)?`<div class="warn"><span>💾 ${days===null?'Nu ai făcut încă niciun backup':'Ultimul backup acum '+days+' zile'}</span><button id="bkNow">Exportă</button></div>`:'';
+  const b=$('bkNow');if(b)b.onclick=doExport}
+
+// ================= 4. budgets =================
+function budRows(k){return Object.keys(store.budgets).filter(c=>store.budgets[c]>0&&CATS[c]).map(c=>{const lim=store.budgets[c],sp=sum(inMonth(k).filter(x=>E(x)&&x.c===c));return {c,lim,sp,p:pct(sp,lim)}}).sort((a,b)=>b.p-a.p)}
+const barCol=p=>p>=100?'#ef4444':p>=80?'#f59e0b':'#22c55e';
+function renderBudgets(){const k=repM(),rows=budRows(k);
+  $('budgets').innerHTML=`<h2>💰 Bugete · ${mName(k)}</h2>`+(rows.length?`<div class="card">`+rows.map(r=>`<div class="bud"><div class="bud-h"><span>${CATS[r.c].e} ${esc(r.c)}</span><span><b>${fmt(r.sp)}</b> / ${fmt(r.lim)} lei</span></div><div class="bar"><i style="width:${Math.min(100,r.p)}%;background:${barCol(r.p)}"></i></div><div class="bud-f">${r.p>=100?`<span style="color:#f87171">Depășit cu ${fmt(r.sp-r.lim)} lei</span>`:`Rămas ${fmt(r.lim-r.sp)} lei`} · ${r.p}%</div></div>`).join('')+`</div>`:`<div class="card shint">Nu ai setat bugete. Mergi la <b>Setări → Buget lunar</b>.</div>`);
+  const al=budRows(mKey(today())).filter(r=>r.p>=80);
+  $('budAlert').innerHTML=al.length?`<div class="warn bad">`+al.map(r=>`<span>${CATS[r.c].e} ${esc(r.c)}: <b>${r.p}%</b> din buget</span>`).join('<br>')+`</div>`:''}
+function renderBudEdit(){if(document.activeElement&&document.activeElement.dataset&&document.activeElement.dataset.bud)return;
+  $('budEdit').innerHTML=Object.keys(CATS).map(c=>`<label class="srow">${CATS[c].e} ${esc(c)}<span><input data-bud="${esc(c)}" inputmode="decimal" placeholder="–" value="${store.budgets[c]||''}"> lei</span></label>`).join('')+`<div class="shint">Lasă gol pentru fără buget.</div>`}
+document.addEventListener('change',e=>{const d=e.target.dataset;
+  if(d.bud!==undefined){const v=num(e.target.value);if(v>0)store.budgets[d.bud]=v;else delete store.budgets[d.bud];save();render();toast('✓ Buget salvat')}});
+
+// ================= 5. daily allowance =================
+function fixedDue(){return fixed.reduce((a,f)=>a+((+f.s>0&&!fixPaid(f).length)?+f.s:0),0)}
+function renderDaily(){const k=mKey(today()),mm=inMonth(k);
+  const inc=sum(mm.filter(x=>x.v)),exp=sum(mm.filter(E)),inv=sum(mm.filter(IV));
+  const ms=[...new Set(data.map(x=>mKey(x.d)))].filter(m=>m<k).sort().slice(-3);
+  const avgInc=ms.length?ms.reduce((a,m)=>a+sum(inMonth(m).filter(x=>x.v)),0)/ms.length:0;
+  const est=inc<avgInc*0.85;const base=est?avgInc:inc;
+  const left=base-exp-inv-fixedDue()-(+store.saveTarget||0);
+  const dl=dim(k)-(+today().slice(8))+1;const per=left/dl;
+  const tday=sum(data.filter(x=>E(x)&&x.d===today()));
+  const st=tday>per?'bad':'ok';
+  $('daily').innerHTML=`<div class="card daily"><div><div class="l">Poți cheltui azi</div><div class="v ${per<0?'neg':''}">${per<0?'−':''}${fmt(Math.abs(per))} lei</div>
+  <div class="h">Azi ai cheltuit <b class="${st}">${fmt(tday)} lei</b> · ${dl} zile rămase · disponibil luna asta ${fmt(left)} lei${est?' <span class="tag">venit estimat</span>':''}</div></div>
+  <div class="ring" style="--p:${per>0?Math.min(100,tday/per*100):100};--c:${st==='bad'?'#ef4444':'#22c55e'}"><span>${per>0?Math.round(tday/per*100):'–'}%</span></div></div>`}
+$('saveT').value=store.saveTarget||'';
+$('saveT').addEventListener('change',e=>{const v=num(e.target.value);store.saveTarget=v>0?v:0;save();render();toast('✓ Salvat')});
+
+// ================= 6. goals =================
+var goalEdit=false;
+function renderGoals(){const g=store.goals;let h='';
+  g.forEach((x,i)=>{const p=pct(x.s,x.t);h+=`<div class="goal"><div class="bud-h"><span><b>${esc(x.n)}</b></span><span>${fmt(x.s)} / ${fmt(x.t)} lei · ${p}%</span></div><div class="bar"><i style="width:${Math.min(100,p)}%;background:linear-gradient(90deg,#3b82f6,#22c55e)"></i></div>
+   ${goalEdit?`<div class="g-a"><button class="gdel" data-gd="${i}">Șterge obiectivul</button></div>`:`<div class="g-a"><input data-gi="${i}" inputmode="decimal" placeholder="sumă"><button data-ga="${i}">+ Adaugă</button><button data-gm="${i}" class="g2">− Scoate</button></div>`}</div>`});
+  if(!g.length&&!goalEdit)h+=`<div class="shint">Ex: capital trading 20.000 lei, vacanță, fond de urgență.</div>`;
+  if(goalEdit)h+=`<div class="g-a"><input id="gN" placeholder="Nume obiectiv"><input id="gT" inputmode="decimal" placeholder="Țintă lei" style="max-width:100px"><button id="gAdd">+</button></div>`;
+  h+=`<button class="lnk" id="gEd">${goalEdit?'Gata':g.length?'Editează':'+ Obiectiv nou'}</button>`;
+  $('goals').innerHTML=h}
+document.addEventListener('click',e=>{const t=e.target;
+  if(t.id==='gEd'){goalEdit=!goalEdit;renderGoals();return}
+  if(t.id==='gAdd'){const n=$('gN').value.trim(),v=num($('gT').value);if(!n||!(v>0))return toast('Completează nume și țintă');store.goals.push({n,t:v,s:0});save();renderGoals();toast('✓ Obiectiv adăugat');return}
+  const d=t.dataset;
+  if(d.gd!==undefined){store.goals.splice(+d.gd,1);save();renderGoals();return}
+  if(d.ga!==undefined||d.gm!==undefined){const i=+(d.ga??d.gm),inp=document.querySelector(`[data-gi="${i}"]`),v=num(inp.value);if(!(v>0))return toast('Scrie o sumă');
+    const g=store.goals[i];g.s=Math.max(0,g.s+(d.ga!==undefined?v:-v));save();renderGoals();toast(g.s>=g.t?'🎉 Obiectiv atins!':'✓ '+g.n+': '+fmt(g.s)+' lei')}});
+
+// ================= 7. charts =================
+function donut(items,total){const R=54,C=2*Math.PI*R;let off=0;
+  return `<svg viewBox="0 0 140 140" class="donut"><circle cx="70" cy="70" r="${R}" fill="none" stroke="var(--line)" stroke-width="18"/>`+items.map(([c,v,col])=>{const l=v/total*C;const s=`<circle cx="70" cy="70" r="${R}" fill="none" stroke="${col}" stroke-width="18" stroke-dasharray="${Math.max(0,l-1.5)} ${C}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;off+=l;return s}).join('')+
+  `<text x="70" y="66" text-anchor="middle" class="d1">${fmt(total)}</text><text x="70" y="84" text-anchor="middle" class="d2">lei cheltuiți</text></svg>`}
+function lineChart(){const days=[...new Set(data.map(x=>x.d))].sort();if(days.length<2)return'';
+  const net={};data.forEach(x=>{net[x.d]=(net[x.d]||0)+(x.v?x.s:-x.s)});
+  let c=0;const pts=days.map(d=>(c+=net[d],[d,c]));
+  const W=320,H=130,P=6,mn=Math.min(0,...pts.map(p=>p[1])),mx=Math.max(...pts.map(p=>p[1]));
+  const t0=new Date(days[0]),t1=new Date(days[days.length-1]),sx=d=>P+(new Date(d)-t0)/(t1-t0||1)*(W-2*P),sy=v=>H-P-(v-mn)/((mx-mn)||1)*(H-2*P);
+  const path=pts.map((p,i)=>(i?'L':'M')+sx(p[0]).toFixed(1)+' '+sy(p[1]).toFixed(1)).join(' ');
+  const ms=[...new Set(days.map(mKey))];
+  return `<svg viewBox="0 0 ${W} ${H+16}" class="lc"><defs><linearGradient id="lg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#22c55e" stop-opacity=".35"/><stop offset="1" stop-color="#22c55e" stop-opacity="0"/></linearGradient></defs>
+  ${mn<0?`<line x1="0" x2="${W}" y1="${sy(0)}" y2="${sy(0)}" stroke="var(--line)" stroke-dasharray="3 3"/>`:''}
+  <path d="${path} L${sx(days[days.length-1])} ${H-P} L${P} ${H-P}Z" fill="url(#lg)"/><path d="${path}" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linejoin="round"/>
+  ${ms.map(m=>{const x=sx(m+'-01'<days[0]?days[0]:m+'-01');return `<text x="${x}" y="${H+13}" class="ax">${LUNI[+m.slice(5)-1].slice(0,3)}</text>`}).join('')}
+  <circle cx="${sx(days[days.length-1])}" cy="${sy(c)}" r="3.5" fill="#22c55e"/></svg>
+  <div class="lc-f"><span>Economii cumulate din ${LUNI[+days[0].slice(5,7)-1].toLowerCase()}</span><b>${c>=0?'+':'−'}${fmt(Math.abs(c))} lei</b></div>`}
+function renderCharts(){const k=selMonth,ex=data.filter(x=>E(x)&&(k==='all'||mKey(x.d)===k)),tot=sum(ex);
+  const it=Object.keys(CATS).map(c=>[c,sum(ex.filter(x=>x.c===c)),CATS[c].c]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+  $('charts').innerHTML=`<h2>📈 Evoluția economiilor</h2><div class="card">${lineChart()}</div>`+
+   (tot?`<h2>🍩 Unde se duc banii · ${k==='all'?'toate lunile':mName(k)}</h2><div class="card dn">${donut(it,tot)}<div class="leg">${it.slice(0,7).map(([c,v,col])=>`<div><i style="background:${col}"></i><span>${CATS[c].e} ${esc(c.split(' & ')[0])}</span><b>${pct(v,tot)}%</b></div>`).join('')}</div></div>`:'')}
+
+// ================= 8. monthly report =================
+function renderReport(){const k=selMonth==='all'?prevKey(mKey(today())):selMonth,pk=prevKey(k),mm=inMonth(k),pm=inMonth(pk);
+  if(!mm.length){$('report').innerHTML='';return}
+  const inc=sum(mm.filter(x=>x.v)),exp=sum(mm.filter(E)),inv=sum(mm.filter(IV)),rate=inc?Math.round((inc-exp)/inc*100):0;
+  const top=mm.filter(E).sort((a,b)=>b.s-a.s).slice(0,5);
+  const ch=Object.keys(CATS).map(c=>[c,sum(mm.filter(x=>E(x)&&x.c===c))-sum(pm.filter(x=>E(x)&&x.c===c))]).filter(x=>Math.abs(x[1])>=20).sort((a,b)=>b[1]-a[1]);
+  const byD={};mm.filter(E).forEach(x=>byD[x.d]=(byD[x.d]||0)+x.s);const wd=Object.entries(byD).sort((a,b)=>b[1]-a[1])[0];
+  const cur=k===mKey(today());
+  $('report').innerHTML=`<h2>🧾 Raport · ${mName(k)}${cur?' (în curs)':''}</h2><div class="card rep">
+   <div class="kpi"><div><span>Venituri</span><b class="pos">+${fmt(inc)}</b></div><div><span>Cheltuieli</span><b>−${fmt(exp)}</b></div><div><span>Economisit</span><b class="${rate>=0?'pos':'neg'}">${rate}%</b></div></div>
+   ${inv?`<div class="shint">Investit în ${mName(k)}: <b>${fmt(inv)} lei</b></div>`:''}
+   ${wd?`<div class="shint">Cea mai scumpă zi: <b>${+wd[0].slice(8)} ${LUNI[+wd[0].slice(5,7)-1].toLowerCase()}</b> · ${fmt(wd[1])} lei · ${mm.filter(E).length} cheltuieli în total</div>`:''}
+   <div class="sub-h">Top 5 cheltuieli</div>${top.map(x=>`<div class="rl"><span>${catOf(x).e} ${esc(x.t)}</span><b>${fmt(x.s)}</b></div>`).join('')}
+   ${pm.length&&ch.length?`<div class="sub-h">vs ${mName(pk)}</div>${[...ch.slice(0,3),...ch.slice(-3).filter(x=>x[1]<0&&!ch.slice(0,3).includes(x))].map(([c,d])=>`<div class="rl"><span>${CATS[c].e} ${esc(c)}</span><b style="color:${d>0?'#f87171':'#4ade80'}">${d>0?'▲ +':'▼ −'}${fmt(Math.abs(d))}</b></div>`).join('')}`:''}
+  </div>`}
+
+// ================= 9. tips =================
+function renderTips(){const k=repM(),tp=x=>x.v&&x.c==='Tips';const mm=inMonth(k).filter(tp);
+  const all=[...new Set(data.filter(tp).map(x=>mKey(x.d)))].sort().slice(-6);if(!all.length){$('tipsBox').innerHTML='';return}
+  const tot=sum(mm),dset=new Set(mm.map(x=>x.d)).size,el=k===mKey(today())?+today().slice(8):dim(k);
+  const pk=prevKey(k),pt=sum(inMonth(pk).filter(tp)),ptd=k===mKey(today())?sum(inMonth(pk).filter(x=>tp(x)&&+x.d.slice(8)<=el)):pt;
+  const mt=all.map(m=>[m,sum(inMonth(m).filter(tp))]),mx=Math.max(1,...mt.map(x=>x[1]));
+  const avg=mt.filter(x=>x[0]!==mKey(today())).reduce((a,x,_,A)=>a+x[1]/A.length,0);
+  $('tipsBox').innerHTML=`<h2>💵 Tips · ${mName(k)}</h2><div class="card rep">
+   <div class="kpi"><div><span>Total</span><b class="pos">${fmt(tot)}</b></div><div><span>Pe zi lucrată</span><b>${dset?fmt(tot/dset):0}</b></div><div><span>Zile cu tips</span><b>${dset}</b></div></div>
+   <div class="shint">Media pe zi calendaristică: <b>${fmt(tot/el)} lei</b>${ptd?` · vs ${mName(pk)} în aceeași perioadă: <b style="color:${tot>=ptd?'#4ade80':'#f87171'}">${tot>=ptd?'+':'−'}${pct(Math.abs(tot-ptd),ptd)}%</b>`:''}${avg?` · media lunară: <b>${fmt(avg)} lei</b>`:''}</div>
+   <div class="mini">${mt.map(([m,v])=>`<div><i style="height:${Math.max(3,v/mx*70)}px"></i><b>${fmt(v)}</b><span>${LUNI[+m.slice(5)-1].slice(0,3)}</span></div>`).join('')}</div></div>`}
+
+// ================= 10. trading =================
+function renderTrading(){const dep=sum(data.filter(IV)),tin=sum(data.filter(x=>x.v&&x.c==='Trading')),cost=sum(data.filter(x=>E(x)&&x.c==='Trading & prop'));
+  const val=xtb.a*fx.EUR.r,pl=val+tin-dep-cost;
+  const ms=[...new Set(data.filter(x=>IV(x)||(x.v&&x.c==='Trading')||(E(x)&&x.c==='Trading & prop')).map(x=>mKey(x.d)))].sort().reverse().slice(0,6);
+  $('trading').innerHTML=`<h2>📊 Trading</h2><div class="card rep">
+   <div class="kpi"><div><span>Depus XTB</span><b>${fmt(dep)}</b></div><div><span>Valoare acum</span><b>${fmt(val)}</b></div><div><span>Rezultat net</span><b class="${pl>=0?'pos':'neg'}">${pl>=0?'+':'−'}${fmt(Math.abs(pl))}</b></div></div>
+   <div class="shint">Încasat din trading (venit „Trading”): <b>${fmt(tin)} lei</b> · costuri prop/challenge: <b>${fmt(cost)} lei</b><br>Rezultat net = valoare XTB + încasări − depuneri − costuri. Valoarea XTB se actualizează din Acasă.</div>
+   ${ms.length?`<div class="sub-h">Pe luni</div>`+ms.map(m=>{const mm=inMonth(m),d=sum(mm.filter(IV)),i=sum(mm.filter(x=>x.v&&x.c==='Trading')),c=sum(mm.filter(x=>E(x)&&x.c==='Trading & prop'));return `<div class="rl"><span>${mName(m)}</span><b>${d?'→ '+fmt(d):''}${i?` <span class="pos">+${fmt(i)}</span>`:''}${c?` <span class="neg">−${fmt(c)}</span>`:''}</b></div>`}).join(''):''}
+  </div>`}
+
+// ================= 12. PIN =================
+var lk={m:'off',buf:'',first:'',hid:0};
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('bani:'+s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function lkDraw(){$('lkD').innerHTML=[0,1,2,3].map(i=>`<i class="${i<lk.buf.length?'on':''}"></i>`).join('');$('lkC').style.visibility=lk.m==='unlock'?'hidden':''}
+function lockShow(m){lk.m=m;lk.buf='';$('lkT').textContent={unlock:'Introdu PIN-ul',set1:'Alege un PIN nou (4 cifre)',set2:'Confirmă PIN-ul'}[m];lkDraw();$('lock').classList.add('on')}
+function lockHide(){$('lock').classList.remove('on');lk.m='off'}
+$('lock').addEventListener('click',async e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;
+  if(k==='x'){lockHide();return}if(k==='b'){lk.buf=lk.buf.slice(0,-1);lkDraw();return}
+  if(lk.buf.length>=4)return;lk.buf+=k;lkDraw();if(lk.buf.length<4)return;
+  const v=lk.buf;if(lk.m==='set1'){lk.first=v;lockShow('set2');return}
+  if(lk.m==='unlock'){if(await sha(v)===store.pin)lockHide();else{$('lkD').classList.add('shake');setTimeout(()=>$('lkD').classList.remove('shake'),400);lk.buf='';lkDraw()}}
+  else if(lk.m==='set2'){if(v===lk.first){store.pin=await sha(v);save();lockHide();renderPin();toast('🔒 PIN activat')}else{toast('PIN-urile nu se potrivesc');lockShow('set1')}}});
+function renderPin(){$('pinBox').innerHTML=store.pin?`<div class="shint">🔒 PIN activ. Aplicația cere PIN la deschidere și după 1 minut în fundal.</div><button class="sbtn" id="pinCh">Schimbă PIN-ul</button><button class="sbtn" id="pinOff">Dezactivează PIN-ul</button>`:`<button class="sbtn" id="pinOn">🔒 Activează PIN (4 cifre)</button><div class="shint">Face ID nu e disponibil pentru aplicații web.</div>`;
+  const on=$('pinOn')||$('pinCh');if(on)on.onclick=()=>lockShow('set1');const off=$('pinOff');if(off)off.onclick=()=>{delete store.pin;save();renderPin();toast('PIN dezactivat')}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)lk.hid=Date.now();else if(store.pin&&lk.m==='off'&&Date.now()-lk.hid>60000)lockShow('unlock')});
+if(store.pin)lockShow('unlock');
+
+// ================= backup / settings =================
+function bkInfo(){$('bkInfo').innerHTML=`<b>${data.length}</b> tranzacții salvate pe acest telefon.${store.lastBackup?' Ultimul backup: <b>'+store.lastBackup.split('-').reverse().join('.')+'</b>.':''}`;
   $('appInfo').innerHTML='Bani · aplicație web, funcționează și offline.'}
-bkInfo();
 $('saveNote').textContent='Datele se salvează automat pe telefon.';
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
-$('bkExp').onclick=async()=>{
+async function doExport(){
   const name='bani-backup-'+today()+'.json';
   const blob=new Blob([JSON.stringify(snap(),null,1)],{type:'application/json'});
+  const done=()=>{store.lastBackup=today();save();render()};
   try{const f=new File([blob],name,{type:'application/json'});
-    if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}}catch(e){if(e&&e.name==='AbortError')return}
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
+    if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});done();return}}catch(e){if(e&&e.name==='AbortError')return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);done()}
+$('bkExp').onclick=doExport;
 $('bkFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
   try{const o=JSON.parse(await f.text());if(!o||!Array.isArray(o.items))throw 0;
     if(!confirm('Înlocuiești datele actuale cu backup-ul ('+o.items.length+' tranzacții)?'))return;
     localStorage.setItem(LSKEY,JSON.stringify(o));location.reload()}catch(err){toast('Fișier invalid')}
   e.target.value=''};
-const _r=render;render=function(){_r();if($('bkInfo'))bkInfo()};
+
+// ================= render hook =================
+const _r=render;
+render=function(){_r();try{renderBk();renderBudgets();renderDaily();renderGoals();renderCharts();renderReport();renderTips();renderTrading();renderBudEdit();renderPin();bkInfo()}catch(err){console.error(err)}};
+render();
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-try{if(!localStorage.getItem(LSKEY))save()}catch(e){}
+try{if(!localStorage.getItem(LSKEY))localStorage.setItem(LSKEY,JSON.stringify(snap()))}catch(e){}
+
+// ================= 11. cloud sync (Supabase) =================
+var SB={u:'https://silidjjqmkpgmcpbvwkl.supabase.co',k:'sb_publishable_Q71qklJABNRxu_VtwI375A_5RqZ-Ron'};
+var AKEY='bani-auth',auth=null,syncSt='',pushT=null,pending=false,busy=false;
+try{auth=JSON.parse(localStorage.getItem(AKEY)||'null')}catch(e){}
+function setAuth(a){auth=a;try{a?localStorage.setItem(AKEY,JSON.stringify(a)):localStorage.removeItem(AKEY)}catch(e){}}
+function fromSess(j,email){return {email:email||(j.user&&j.user.email),uid:j.user&&j.user.id,at:j.access_token,rt:j.refresh_token,exp:Date.now()+(j.expires_in||3600)*1000}}
+async function authReq(path,body){const r=await fetch(SB.u+'/auth/v1/'+path,{method:'POST',headers:{apikey:SB.k,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.msg||j.error_description||j.message||('Eroare '+r.status));return j}
+async function token(){if(!auth)throw new Error('Nelogat');
+  if(Date.now()>auth.exp-60000){const j=await authReq('token?grant_type=refresh_token',{refresh_token:auth.rt});setAuth(fromSess(j,auth.email))}
+  return auth.at}
+async function rest(method,path,body,retry){const t=await token();
+  const r=await fetch(SB.u+'/rest/v1/'+path,{method,cache:'no-store',headers:{apikey:SB.k,Authorization:'Bearer '+t,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:body?JSON.stringify(body):undefined});
+  if(r.status===401&&!retry){auth.exp=0;return rest(method,path,body,true)}
+  if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.message||('Eroare '+r.status))}
+  return r.status===204?null:r.json().catch(()=>null)}
+function cloudData(){const o=JSON.parse(JSON.stringify(snap()));return o}
+async function push(){if(!auth)return;if(!navigator.onLine){pending=true;syncSt='offline · se trimite când revii online';renderSync();return}
+  busy=true;try{await rest('POST','bani',{user_id:auth.uid,data:cloudData(),updated_at:new Date().toISOString()});pending=false;store.syncedAt=Date.now();localStorage.setItem(LSKEY,JSON.stringify(snap()));syncSt='sincronizat'}
+  catch(e){pending=true;syncSt='eroare: '+e.message}finally{busy=false;renderSync()}}
+function schedPush(){if(!auth)return;pending=true;clearTimeout(pushT);pushT=setTimeout(push,1500)}
+async function pull(manual){if(!auth||busy)return;if(!navigator.onLine){syncSt='offline';renderSync();return}
+  busy=true;let reload=false;
+  try{const rows=await rest('GET','bani?select=data,updated_at&user_id=eq.'+auth.uid);const rem=rows&&rows[0]&&rows[0].data;
+    const lm=store.mtime||0,rm=rem&&rem.mtime||0;
+    if(rem&&rm>lm&&!pending){try{localStorage.setItem('bani-prev',localStorage.getItem(LSKEY))}catch(e){}
+      localStorage.setItem(LSKEY,JSON.stringify(Object.assign(rem,{syncedAt:Date.now()})));reload=true}
+    else if(!rem||lm>rm||pending){busy=false;await push();return}
+    else{syncSt='sincronizat';store.syncedAt=Date.now()}}
+  catch(e){syncSt='eroare: '+e.message}finally{busy=false;renderSync()}
+  if(reload){try{sessionStorage.setItem('synced','1')}catch(e){}location.reload()}
+  else if(manual)toast(syncSt==='sincronizat'?'☁️ Sincronizat':syncSt)}
+async function signIn(up){const em=$('sbE').value.trim(),pw=$('sbP').value;
+  if(!em||pw.length<6)return toast('Email + parolă (minim 6 caractere)');
+  try{$('sbMsg').textContent='Se conectează…';
+    let j=up?await authReq('signup',{email:em,password:pw}):await authReq('token?grant_type=password',{email:em,password:pw});
+    if(!j.access_token){if(up)j=await authReq('token?grant_type=password',{email:em,password:pw});if(!j.access_token)throw new Error('Confirmă emailul sau dezactivează „Confirm email” în Supabase')}
+    setAuth(fromSess(j,em));toast('☁️ Conectat');renderSync();await pull(false)}
+  catch(e){$('sbMsg').textContent='❌ '+e.message}}
+function ago(t){if(!t)return'niciodată';const s=Math.round((Date.now()-t)/1000);return s<60?'acum câteva secunde':s<3600?'acum '+Math.round(s/60)+' min':s<86400?'acum '+Math.round(s/3600)+' h':new Date(t).toLocaleDateString('ro-RO')}
+function renderSync(){const b=$('syncBox');if(!b)return;
+  if(document.activeElement&&b.contains(document.activeElement)&&document.activeElement.tagName==='INPUT')return;
+  b.innerHTML=auth?`<div class="shint">Conectat ca <b>${esc(auth.email)}</b><br>Ultima sincronizare: <b>${ago(store.syncedAt)}</b>${syncSt?' · '+esc(syncSt):''}</div>
+   <button class="sbtn" id="sbSync">🔄 Sincronizează acum</button><button class="sbtn" id="sbOut">Ieși din cont</button>
+   <div class="shint">Pe alt dispozitiv: deschizi același link, intri cu același cont și datele apar automat.</div>`
+  :`<input class="sin" id="sbE" type="email" placeholder="Email" autocomplete="username"><input class="sin" id="sbP" type="password" placeholder="Parolă (min. 6 caractere)" autocomplete="current-password">
+   <div class="g-a" style="margin:0"><button id="sbIn" style="flex:1">Intră în cont</button><button id="sbUp" class="g2" style="flex:1">Creează cont</button></div>
+   <div class="shint" id="sbMsg">Prima dată: <b>Creează cont</b>. Datele de pe acest telefon se urcă în cloud.</div>`;
+  const q=id=>$(id);if(q('sbIn'))q('sbIn').onclick=()=>signIn(false);if(q('sbUp'))q('sbUp').onclick=()=>signIn(true);
+  if(q('sbSync'))q('sbSync').onclick=()=>pull(true);
+  if(q('sbOut'))q('sbOut').onclick=()=>{if(!confirm('Ieși din cont? Datele rămân pe telefon.'))return;setAuth(null);syncSt='';renderSync()}}
+const _save=save;save=function(){store.mtime=Date.now();_save();schedPush()};
+const _r2=render;render=function(){_r2();renderSync()};
+renderSync();
+window.addEventListener('online',()=>{if(pending)push();else pull()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)pull()});
+try{if(sessionStorage.getItem('synced')){sessionStorage.removeItem('synced');setTimeout(()=>toast('☁️ Date actualizate din cloud'),400)}}catch(e){}
+pull();
+
 
 </script>
 </body>
