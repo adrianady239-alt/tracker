@@ -434,6 +434,21 @@ body.hideamt #eyeBtn svg{stroke:#111}
 
 .fixed .fr:has(input.n){flex-wrap:wrap}.fixed .fr input.n{flex:1 1 100%!important}
 
+.row .s:after{content:" ✏️";font-size:10px;opacity:.45}
+.tipsq{margin-top:12px;padding:12px 12px 10px}
+.tq-h{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:700;margin:0 2px 9px}.tq-h b{color:var(--ac)}.tq-m{font-size:12px;color:var(--mut);font-weight:600}.tq-m b{color:var(--tx)}
+.tq-b{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.tq-b button{height:42px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:color-mix(in srgb,var(--ac) 14%,rgba(0,0,0,.25));color:var(--tx);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.tq-b button:active{transform:scale(.95);background:var(--ac);color:var(--acd)}
+.tq-b .tq-o{grid-column:span 2;font-size:13px;background:rgba(255,255,255,.08)}
+.tq-u{margin-top:8px;width:100%;height:36px;border-radius:12px;border:1px dashed rgba(255,255,255,.25);background:none;color:var(--mut);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+
+.fabt{position:fixed;z-index:8;right:22px;bottom:calc(92px + env(safe-area-inset-bottom));width:52px;height:52px;border-radius:50%!important;display:grid;place-items:center;font-size:24px;cursor:pointer;padding:0}
+.fabt:active{transform:scale(.92)}
+body.open .fabt{display:none}
+.tipsbtn{display:block;width:100%;margin:0 0 10px;height:46px;border-radius:99px;border:1px solid color-mix(in srgb,var(--ac) 45%,transparent);background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--ac);font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+.quick .tipsbtn,.sheet.edit .tipsbtn,.sheet.check .tipsbtn{display:none}
+
 </style>
 </head>
 <body>
@@ -468,6 +483,7 @@ body.hideamt #eyeBtn svg{stroke:#111}
   <div class="mslot" data-slot="list"><div class="chips" id="months"></div></div>
   <div class="srch"><input id="q" type="search" placeholder="🔍 Caută (text, categorie, sumă)" autocomplete="off"></div>
   <div class="shint" id="qInfo" style="margin:6px 4px 0"></div>
+  <div class="shint" style="margin:8px 4px 0">Atinge o tranzacție ca s-o modifici (sumă, nume, categorie, dată).</div>
   <h2 id="listTitle">Tranzacții</h2>
   <div id="list"></div>
 </section>
@@ -530,11 +546,13 @@ body.hideamt #eyeBtn svg{stroke:#111}
   <button data-go="stats"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Statistici</button>
   <button data-go="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Setări</button>
 </nav>
+<button class="fabt g" id="fabTips" aria-label="Adaugă tips">💵</button>
 <button class="fabx g" id="fab" aria-label="Adaugă"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
 <div class="sheetbg" id="bg"></div>
 <div class="sheet" id="sheet">
   <div class="grab"></div>
   <div class="qt" id="qt">💵 Tips</div>
+  <button class="tipsbtn" id="sheetTips">💵 Adaugă Tips rapid</button>
   <div class="seg three"><div class="e" data-ty="0">Cheltuială</div><div class="i" data-ty="1">Venit</div><div class="v" data-ty="2">Investiție</div></div>
   <div class="amt"><input id="fs" inputmode="decimal" placeholder="0" autocomplete="off"><span>lei</span></div>
   <div class="calc" id="calcEq"></div>
@@ -1212,11 +1230,11 @@ function renderFixed(ev){const cm=mKey(today());
   let h=`<div class="hd"><b>📌 Cheltuieli fixe</b><span>${fmt(tot)} lei luna asta</span><button id="fxEdit">${fixEdit?'Gata':'Editează'}</button></div>`;
   let due=0;const ml=k=>LUNI[+k.slice(5)-1].slice(0,3).toLowerCase()+' '+k.slice(0,4);
   fixed.forEach((f,i)=>{const k=CATS[f.c]||CATS.Diverse;
-    if(fixEdit){h+=`<div class="fr"><input class="n" data-fn="${i}" value="${esc(f.n)}"><input class="a" data-fa="${i}" inputmode="decimal" value="${f.s}"><select data-fc="${i}">${['Rate & credite','Facturi & abonamente','Transport & mașină'].map(c=>`<option ${c===f.c?'selected':''}>${c}</option>`).join('')}</select><button class="del" data-fd="${i}">×</button></div><div class="fr" style="border-top:0;padding-top:0;font-size:12px;color:var(--mut)">din <input type="month" data-ff="${i}" value="${f.from||''}" style="flex:1"> până <input type="month" data-fu="${i}" value="${f.until||''}" style="flex:1"></div>`;return}
+    if(fixEdit||fixOne===i){h+=`<div class="fr"><input class="n" data-fn="${i}" value="${esc(f.n)}"><input class="a" data-fa="${i}" inputmode="decimal" value="${f.s}"><select data-fc="${i}">${['Rate & credite','Facturi & abonamente','Transport & mașină'].map(c=>`<option ${c===f.c?'selected':''}>${c}</option>`).join('')}</select><button class="del" data-fd="${i}">×</button></div><div class="fr" style="border-top:0;padding-top:0;font-size:12px;color:var(--mut)">din <input type="month" data-ff="${i}" value="${f.from||''}" style="flex:1"> până <input type="month" data-fu="${i}" value="${f.until||''}" style="flex:1"></div>${fixOne===i?`<div class="fr" style="border-top:0;padding-top:0"><button class="st due" data-fok="1" style="flex:1;padding:10px">✓ Gata</button></div>`:''}`;return}
     const act=fAct(f,cm),a=fAmt(f,cm),p=fixPaid(f),ps=sum(p),vr=!(a>0);
     const note=!act?(f.from&&cm<f.from?`din ${ml(f.from)}`:'încheiat'):f.until?`până în ${ml(f.until)}`:'';
     if(act&&!p.length&&!vr)due+=a;
-    h+=`<div class="fr" style="${act?'':'opacity:.5'}"><div class="ic" style="background:${tint(k.c,.22)}">${k.e}</div><div class="nm">${esc(f.n)}${note?`<div style="font-size:11px;color:var(--mut);font-weight:500">${note}</div>`:''}</div><div class="am">${vr?'variabil':fmt(a)}</div>${!act?'':vr?`<button class="st ${p.length?'ok':'due'}" data-fp="${i}" style="cursor:pointer">${p.length?'✓ '+fmt(ps)+' · +':'Adaugă'}</button>`:p.length?`<span class="st ok">✓ ${fmt(ps)}</span>`:`<button class="st due" data-fp="${i}">Plătește</button>`}</div>`});
+    h+=`<div class="fr" style="${act?'':'opacity:.5'}"><div class="ic" style="background:${tint(k.c,.22)}">${k.e}</div><div class="nm" data-fe="${i}" style="cursor:pointer">${esc(f.n)}${note?`<div style="font-size:11px;color:var(--mut);font-weight:500">${note}</div>`:''}</div><div class="am" data-fe="${i}" style="cursor:pointer">${vr?'variabil':fmt(a)} <span style="font-size:11px;opacity:.6">✏️</span></div>${!act?'':vr?`<button class="st ${p.length?'ok':'due'}" data-fp="${i}" style="cursor:pointer">${p.length?'✓ '+fmt(ps)+' · +':'Adaugă'}</button>`:p.length?`<span class="st ok">✓ ${fmt(ps)}</span>`:`<button class="st due" data-fp="${i}">Plătește</button>`}</div>`});
   if(fixEdit)h+=`<div class="fr"><input class="n" id="nfN" placeholder="Nume (ex: Întreținere)"><input class="a" id="nfA" inputmode="decimal" placeholder="lei"><select id="nfC"><option>Facturi & abonamente</option><option>Rate & credite</option><option>Transport & mașină</option></select><button class="st due" id="nfAdd">+</button></div>`;
   else h+=`<div class="fsum"><span>Rămas de plătit în ${LUNI[new Date().getMonth()].toLowerCase()}: <b>${fmt(due)} lei</b></span>${ev==null?'':`<span>Disponibil după fixe: <b>≈ ${fmt(ev-due)} lei</b></span>`}</div>`;
   $('fixed').innerHTML=h}
@@ -1313,6 +1331,27 @@ async function pollRemote(){if(!auth||busy||document.hidden||!navigator.onLine)r
 function schedPush(){if(!auth)return;pending=true;clearTimeout(pushT);pushT=setTimeout(async()=>{await push();try{const rows=await rest('GET','bani?select=updated_at&user_id=eq.'+auth.uid);lastSeen=rows&&rows[0]&&rows[0].updated_at}catch(e){}},700)}
 clearInterval(pollT);pollT=setInterval(pollRemote,4000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)pollRemote()});
+
+// ================= v11: easier editing =================
+var fixOne=-1;
+document.addEventListener('click',e=>{const t=e.target.closest('[data-fe],[data-fok]');if(!t)return;
+  if(t.dataset.fok){fixOne=-1;render();toast('✓ Salvat');return}
+  fixOne=+t.dataset.fe;render();setTimeout(()=>{const inp=document.querySelector(`[data-fa="${fixOne}"]`);if(inp){inp.focus();inp.select()}},60)});
+function openEdit(i){const x=data[i];if(!x)return;
+  openSheet();mode='edit';editIdx=i;$('sheet').classList.add('edit');
+  fType=IV(x)?2:x.v?1:0;$('fs').value=x.s;$('ft').value=x.t;setDate(x.d);
+  drawType();fCat=x.c;catTouched=true;drawPick();drawSugg();check();
+  $('saveBtn').textContent='Salvează modificarea';setTimeout(()=>{$('fs').focus();$('fs').select()},380)}
+
+// ================= v12: description optional (uses category name) =================
+function check(){const v=calcVal($('fs').value);$('saveBtn').disabled=mode==='check'?!(v>=0&&$('fs').value!==''):!(v>0&&fCat)}
+document.addEventListener('click',e=>{if(!e.target.closest('#saveBtn')||mode==='check')return;const t=$('ft');if(!t.value.trim()&&fCat)t.value=fCat.split(' & ')[0]},true);
+$('fs').addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('ft').value.trim()&&fCat&&mode!=='check')$('ft').value=fCat.split(' & ')[0]},true);
+
+// ================= v13b: tips button next to + =================
+$('fabTips').onclick=()=>openTips();
+$('sheetTips').onclick=()=>openTips();
+document.addEventListener('click',e=>{const t=e.target.closest('[data-ty="1"]');if(!t||mode==='edit')return;setTimeout(()=>{if(!catTouched||!fCat||!INC[fCat]){fCat='Tips';drawPick();check()}},0)});
 
 </script>
 </body>
