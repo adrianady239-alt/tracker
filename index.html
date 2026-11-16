@@ -468,8 +468,8 @@ body.hideamt #eyeBtn{background:#fff!important}body.hideamt #eyeBtn svg{stroke:#
 /* hero */
 .rhero{text-align:center;padding:72px 0 20px}
 .rh-l{font-size:15px;font-weight:500;color:rgba(255,255,255,.9)}
-.rh-b{font-size:76px;font-weight:700;letter-spacing:-.05em;line-height:1;margin:8px 0 6px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
-.rh-b span{font-size:30px;letter-spacing:-.02em;margin-left:2px}
+.rh-b{font-size:56px;font-weight:600;letter-spacing:-.03em;line-height:1;margin:8px 0 6px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.rh-b span{font-size:24px;font-weight:500;letter-spacing:-.02em;margin-left:2px}
 .rh-s{font-size:15px;color:rgba(255,255,255,.85);font-weight:500}.rh-s b{font-weight:600}
 .rh-p{margin-top:56px;border:0;border-radius:99px;padding:12px 22px;font:inherit;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);cursor:pointer}
 /* actions */
@@ -522,6 +522,33 @@ html{background:#121212!important}body{background:transparent!important}
 .sdots{display:flex;justify-content:center;align-items:center;gap:7px;margin:4px 0 2px}.sdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3)}.sdots i.sm{width:4px;height:4px}.sdots i.on{width:9px;height:9px;background:#fff}
 @keyframes inL{from{transform:translateX(-40px);opacity:.3}to{transform:none;opacity:1}}@keyframes inR{from{transform:translateX(40px);opacity:.3}to{transform:none;opacity:1}}
 .st.inL{animation:inL .25s ease}.st.inR{animation:inR .25s ease}
+/* ===== v21 finisaje premium ===== */
+html{-webkit-tap-highlight-color:transparent}
+body{font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+button,.row,.chip,[data-pc],.rcard,.sp{transition:transform .12s ease,opacity .12s ease,background .2s ease}
+button:active,.chip:active,[data-pc]:active,.sp:active{transform:scale(.95)}
+.row:active,.rcard:active{transform:scale(.985)}
+/* rânduri curate: fără creion/× — atingi rândul ca să editezi, ștergi din fereastră */
+.row .s:after{content:none!important}
+#list .row .x{display:none!important}
+#list .row{padding-right:16px!important}
+/* cifre */
+.rh-b{font-feature-settings:"tnum"}
+.rh-s{opacity:.8}
+/* toast mai fin */
+.msg{border-radius:16px!important;font-weight:500!important;padding:11px 18px!important;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+/* sheet */
+.sheet{border-radius:32px 32px 0 0!important}
+.sheet .amt input{font-size:52px!important;font-weight:600!important;letter-spacing:-.03em}
+.sheet .save:not(:disabled){background:#fff!important;color:#000!important}
+.sheet .save:disabled{opacity:.35}
+.sheet .desc,.sheet #fd{border-radius:16px!important}
+/* tranziție între taburi */
+.tab.on,[id^="t-"].on{animation:tabIn .28s ease}
+@keyframes tabIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* titluri de secțiune mai discrete */
+.day{font-weight:600!important;opacity:.75}
+#totAll{display:none!important}
 
 </style>
 </head>
@@ -1197,7 +1224,7 @@ function dailyModel(){const t=today(),k=mKey(t),mm=inMonth(k),m=incomeModel(k);
   const dl=dim(k)-(+t.slice(8))+1;
   const baseSal=m.sal+m.other-expBefore-inv-due-tgt;
   return {per:(baseSal+m.tips)/dl,perSal:baseSal/dl,perTips:m.tips/dl,tday:sum(mm.filter(x=>E(x)&&x.d===t)),dl,salEst:m.salEst}}
-const median=a=>{a=[...a].sort((p,q)=>p-q);const n=a.length;return !n?0:n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2};
+function median(a){a=[...a].sort((p,q)=>p-q);const n=a.length;return !n?0:n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2}
 function unusualList(){const by={};data.filter(x=>E(x)&&!isFixedTx(x)).forEach(x=>(by[x.c]=by[x.c]||[]).push(x.s));
   const skip=['Rate & credite','Facturi & abonamente'];
   return data.filter(x=>E(x)&&x.d>=today(30)&&!skip.includes(x.c)&&!isFixedTx(x)&&(by[x.c]||[]).length>=5&&x.s>=100)
@@ -1211,7 +1238,7 @@ function forecast(){const t=today(),k=mKey(t),mm=inMonth(k),m=incomeModel(k),el=
   return {val:m.sal+m.tips+m.other-exp-rate*(D-el)-fixedDue(),rate,salEst:m.salEst}}
 
 // ---- home ----
-const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}var LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
 function renderHome(){const t=today(),k=mKey(t),mm=inMonth(k),dt=new Date(t+'T12:00:00'),D=dim(k),el=+t.slice(8);
   $('hMonth').textContent=LUNI[dt.getMonth()];
   $('hDate').innerHTML=`${cap(ZILE[dt.getDay()])}, ${el} · <b>${D-el} zile rămase</b>`;
@@ -1336,7 +1363,7 @@ function renderBk(){const lb=store.lastBackup;const days=lb?Math.floor((new Date
 const _rf8=renderFixed;
 function mAdd(k,n){const d=new Date(+k.slice(0,4),+k.slice(5,7)-1+n,1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
 function mDiff(a,b){return (+b.slice(0,4)-+a.slice(0,4))*12+(+b.slice(5,7)-+a.slice(5,7))}
-const ml8=k=>['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'][+k.slice(5)-1]+' '+k.slice(0,4);
+var ml8=k=>['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'][+k.slice(5)-1]+' '+k.slice(0,4);
 document.addEventListener('change',e=>{const d=e.target.dataset;
   if(d.ff!==undefined){fixed[+d.ff].from=e.target.value||undefined;save();render()}
   else if(d.fu!==undefined){fixed[+d.fu].until=e.target.value||undefined;save();render()}});
@@ -1443,11 +1470,11 @@ $('rStats').onclick=()=>go('stats');
 $('tabAdd').onclick=()=>openSheet();
 $('accBtn').onclick=()=>{go('set');setTimeout(()=>$('syncBox').scrollIntoView({behavior:'smooth',block:'center'}),50)};
 if(LS.get('bani-acc',null)==null){LS.set('bani-acc','alb');applyLook()}
-const RO_D=['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'];
+var RO_D=['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'];
 function fmt2(n){const a=Math.abs(n),i=Math.floor(a),d=Math.round((a-i)*100);return [i.toLocaleString('ro-RO'),String(d===100?0:d).padStart(2,'0')]}
 function whenStr(x){const t=today();const hm=x.ts?new Date(x.ts).toTimeString().slice(0,5):'';
   if(x.d===t)return 'Astăzi'+(hm?', '+hm:'');if(x.d===today(1))return 'Ieri'+(hm?', '+hm:'');const d=new Date(x.d+'T12:00:00');return d.getDate()+' '+LUNI[d.getMonth()].toLowerCase()}
-const k1=n=>n>=10000?(n/1000).toFixed(1).replace('.',',').replace(',0','')+'k':n>=1000?(n/1000).toFixed(2).replace('.',',')+'k':fmt(n);
+function k1(n){return n>=10000?(n/1000).toFixed(1).replace('.',',').replace(',0','')+'k':n>=1000?(n/1000).toFixed(2).replace('.',',')+'k':fmt(n)}
 function renderHome(){const t=today(),k=mKey(t),mm=inMonth(k),el=+t.slice(8),D=dim(k),dt=new Date(t+'T12:00:00');
   const inc=sum(mm.filter(x=>x.v)),exp=sum(mm.filter(E)),sold=inc-exp,ev=expected();
   const [si,sd]=fmt2(sold);
@@ -1500,9 +1527,9 @@ render();
 
 // ================= v17: single period chart in Statistici =================
 var statP='m0',statM=null;
-const dS=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-const addD=(s,n)=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return dS(d)};
-const dayN=(a,b)=>Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/864e5);
+function dS(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function addD(s,n){const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return dS(d)}
+function dayN(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/864e5)}
 function statRange(){const t=today(),k=mKey(t),y=t.slice(0,4);let a,b,end,pa;
   if(statP==='m0'){a=k+'-01';b=k+'-'+String(dim(k)).padStart(2,'0');end=t;pa=prevKey(k)+'-01'}
   else if(statP==='m1'){const pk=prevKey(k);a=pk+'-01';b=pk+'-'+String(dim(pk)).padStart(2,'0');end=b;pa=prevKey(pk)+'-01'}
