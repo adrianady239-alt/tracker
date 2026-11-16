@@ -570,6 +570,9 @@ button:active,.chip:active,[data-pc]:active,.sp:active{transform:scale(.95)}
 .st-tip .tm{color:rgba(255,255,255,.45);font-size:11px}
 .st-tip .tc,.st-tip .tp{margin-top:6px;color:rgba(255,255,255,.55);font-size:11.5px;display:flex;justify-content:space-between;gap:8px}.st-tip .tp{margin-top:1px}
 .st-tip .tc b{color:#fff}
+/* v25 mâner mai mare */
+.sheet .grab{position:relative;width:44px!important;height:5px!important;border-radius:9px!important;background:rgba(255,255,255,.3)!important;margin:2px auto 14px!important}
+.sheet .grab:before{content:"";position:absolute;left:-120px;right:-120px;top:-16px;bottom:-14px}
 
 </style>
 </head>
@@ -1660,6 +1663,21 @@ function stChart(r,el,cur,prv,hasPrev){
   box.addEventListener('pointerdown',e=>{const w=e.target.closest&&e.target.closest('.st-w');if(!w)return;on=true;try{w.setPointerCapture(e.pointerId)}catch(_){}show(w,e.clientX)});
   box.addEventListener('pointermove',e=>{if(!on)return;const w=box.querySelector('.st-w');if(w)show(w,e.clientX)});
   ['pointerup','pointercancel'].forEach(t=>box.addEventListener(t,()=>{if(!on)return;on=false;setTimeout(()=>{if(!on)hide()},1200)}));
+})();
+
+// ================= v25: glisare în jos ca să închizi fereastra =================
+(function(){const sh=$('sheet');if(!sh)return;let y0=null,x0=0,dy=0,t0=0,mode=null;
+  const set=v=>sh.style.setProperty('transform',v,'important');
+  sh.addEventListener('touchstart',e=>{if(!document.body.classList.contains('open'))return;y0=e.touches[0].clientY;x0=e.touches[0].clientX;dy=0;mode=null;t0=Date.now()},{passive:true});
+  sh.addEventListener('touchmove',e=>{if(y0==null)return;const d=e.touches[0].clientY-y0,dx=e.touches[0].clientX-x0;
+    if(mode==null&&(Math.abs(d)>6||Math.abs(dx)>6)){const fromGrab=y0-sh.getBoundingClientRect().top<70;mode=(d>0&&Math.abs(d)>Math.abs(dx)&&(sh.scrollTop<=0||fromGrab))?'drag':'no';
+      if(mode==='drag'){sh.style.transition='none';document.activeElement&&document.activeElement.blur&&document.activeElement.blur()}}
+    if(mode!=='drag')return;e.preventDefault();dy=Math.max(0,d);set(`translateY(${dy}px)`);
+    const bg=$('bg');if(bg)bg.style.opacity=String(Math.max(0,1-dy/400))},{passive:false});
+  sh.addEventListener('touchend',()=>{if(y0==null)return;y0=null;if(mode!=='drag')return;
+    const v=dy/Math.max(1,Date.now()-t0);sh.style.transition='transform .28s cubic-bezier(.2,.8,.2,1)';const bg=$('bg');
+    if(dy>110||v>0.6){set(`translateY(calc(100% + 30px))`);if(bg)bg.style.opacity='';setTimeout(()=>{closeSheet();sh.style.removeProperty('transform');sh.style.transition='';if(typeof go==='function')go('home')},260)}
+    else{sh.style.removeProperty('transform');if(bg)bg.style.opacity='';setTimeout(()=>sh.style.transition='',300)}});
 })();
 
 </script>
