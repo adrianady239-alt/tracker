@@ -2408,7 +2408,7 @@ function pad2(n){return String(n).padStart(2,'0')}
 function dueDate(f,mk){return mk+'-'+pad2(Math.min(+f.d,dim(mk)))}
 function dueList(){const t=today(),cm=mKey(t),out=[];
   [cm,mAdd(cm,1)].forEach(mk=>fixed.forEach((f,i)=>{if(!f.d||!fAct(f,mk))return;const a=fAmt(f,mk);if(!(a>0))return;
-    const ds=dueDate(f,mk),n=dayN(t,ds);if(f.paidM&&f.paidM[mk])return;if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>14)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
+    const ds=dueDate(f,mk),n=dayN(t,ds);if(f.paidM&&f.paidM[mk])return;if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>20)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
   return out.sort((x,y)=>x.n-y.n)}
 function whenTxt(n){return n<0?`Întârziat ${-n} ${-n===1?'zi':'zile'}`:n===0?'Azi':n===1?'Mâine':n===2?'Poimâine':`În ${n} zile`}
 function renderRem(){let box=$('payRem');if(!box){box=document.createElement('div');box.id='payRem';const r=$('rRecent');if(!r)return;r.parentNode.insertBefore(box,r)}
