@@ -912,6 +912,7 @@ body:not(.haswp) #wpbg{background:radial-gradient(55% 35% at 15% 18%,#1d4ed8,tra
 .pr-pay{border:0;border-radius:99px;background:#fff;color:#000;font:inherit;font-size:12.5px;font-weight:600;padding:5px 12px;cursor:pointer}
 .fdue{font-size:11px;color:#fbbf24;font-weight:600;margin-top:1px}.fdue.none{color:rgba(255,255,255,.45);font-weight:500}
 .msg .tk.wr{background:#fbbf24;color:#2a1a00}
+.pr-r.far{opacity:.75}.pr-r.far .pr-pay{display:none}
 
 </style>
 </head>
@@ -2395,18 +2396,18 @@ function pad2(n){return String(n).padStart(2,'0')}
 function dueDate(f,mk){return mk+'-'+pad2(Math.min(+f.d,dim(mk)))}
 function dueList(){const t=today(),cm=mKey(t),out=[];
   [cm,mAdd(cm,1)].forEach(mk=>fixed.forEach((f,i)=>{if(!f.d||!fAct(f,mk))return;const a=fAmt(f,mk);if(!(a>0))return;
-    const ds=dueDate(f,mk),n=dayN(t,ds);if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>2)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
+    const ds=dueDate(f,mk),n=dayN(t,ds);if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>14)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
   return out.sort((x,y)=>x.n-y.n)}
-function whenTxt(n){return n<0?`Întârziat ${-n} ${-n===1?'zi':'zile'}`:n===0?'Azi':n===1?'Mâine':'Poimâine'}
+function whenTxt(n){return n<0?`Întârziat ${-n} ${-n===1?'zi':'zile'}`:n===0?'Azi':n===1?'Mâine':n===2?'Poimâine':`În ${n} zile`}
 function renderRem(){let box=$('payRem');if(!box){box=document.createElement('div');box.id='payRem';const r=$('rRecent');if(!r)return;r.parentNode.insertBefore(box,r)}
   const L=dueList();if(!L.length){box.innerHTML='';box.style.display='none';return}box.style.display='';
   const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'],tot=L.reduce((s,x)=>s+x.a,0);
-  box.innerHTML=`<div class="rcard prem${L.some(x=>x.n<=0)?' urg':''}"><div class=pr-h><span class=pr-bell>${'<svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>'}</span><b>Plăți care urmează</b><span class=num>${fmtL(tot)} lei</span></div>
-   ${L.map(x=>{const K=CATS[x.f.c]||CATS.Diverse,d=new Date(x.ds+'T12:00:00');return `<div class=pr-r><i style="background:${tint(K.c,.28)}">${K.e}</i><div class=pr-m><b>${esc(x.f.n)}</b><span class="${x.n<0?'late':x.n===0?'today':''}">${whenTxt(x.n)} · ${ZILE[d.getDay()]}, ${d.getDate()} ${LS3[d.getMonth()]}</span></div><div class=pr-a><b class=num>${fmtL(x.a)} lei</b>${x.cur?`<button class=pr-pay data-fp="${x.i}">Plătește</button>`:''}</div></div>`}).join('')}</div>`}
+  box.innerHTML=`<div class="rcard prem${L.some(x=>x.n<=2)?' urg':''}"><div class=pr-h><span class=pr-bell>${'<svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>'}</span><b>${L.some(x=>x.n<=2)?'Plăți care urmează':'Următoarele plăți'}</b><span class=num>${fmtL(tot)} lei</span></div>
+   ${L.map(x=>{const K=CATS[x.f.c]||CATS.Diverse,d=new Date(x.ds+'T12:00:00');return `<div class="pr-r${x.n>2?' far':''}"><i style="background:${tint(K.c,.28)}">${K.e}</i><div class=pr-m><b>${esc(x.f.n)}</b><span class="${x.n<0?'late':x.n===0?'today':''}">${whenTxt(x.n)} · ${ZILE[d.getDay()]}, ${d.getDate()} ${LS3[d.getMonth()]}</span></div><div class=pr-a><b class=num>${fmtL(x.a)} lei</b>${x.cur?`<button class=pr-pay data-fp="${x.i}">Plătește</button>`:''}</div></div>`}).join('')}</div>`}
 // zi scadentă în lista de costuri fixe (afișare + editare)
 function decorFixed(){const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'],cm=mKey(today());
-  document.querySelectorAll('#fixed .nm[data-fe]').forEach(el=>{const f=fixed[+el.dataset.fe];if(!f||!fAct(f,cm)||!(fAmt(f,cm)>0)||el.querySelector('.fdue'))return;
-    el.insertAdjacentHTML('beforeend',f.d?`<div class=fdue>scadent ${Math.min(+f.d,dim(cm))} ${LS3[+cm.slice(5)-1]}</div>`:`<div class="fdue none">fără dată · atinge ca s-o setezi</div>`)});
+  document.querySelectorAll('#fixed .nm[data-fe]').forEach(el=>{const f=fixed[+el.dataset.fe];if(!f||el.querySelector('.fdue'))return;const nm=mAdd(cm,1),act=fAct(f,cm),soon=!act&&f.from===nm,mk=act?cm:nm;if((!act&&!soon)||!(fAmt(f,mk)>0))return;
+    el.insertAdjacentHTML('beforeend',f.d?`<div class=fdue>${soon?'prima plată':'scadent'} ${Math.min(+f.d,dim(mk))} ${LS3[+mk.slice(5)-1]} · ${fmtL(fAmt(f,mk))} lei</div>`:`<div class="fdue none">fără dată · atinge ca s-o setezi</div>`)});
   document.querySelectorAll('#fixed input[data-ff]').forEach(inp=>{const i=+inp.dataset.ff,row=inp.parentNode;if(row.querySelector('[data-fz]'))return;
     row.insertAdjacentHTML('beforeend',` ziua <input type=number min=1 max=31 inputmode=numeric data-fz="${i}" value="${fixed[i].d||''}" placeholder="–" style="width:52px">`)})}
 document.addEventListener('change',e=>{const z=e.target.dataset.fz;if(z===undefined)return;const v=parseInt(e.target.value,10);fixed[+z].d=v>=1&&v<=31?v:undefined;save();render()});
