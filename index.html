@@ -2401,7 +2401,7 @@ IC.home='<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1
 })();
 
 // ================= v35: data scadentă la costuri fixe + memento plăți =================
-function ensureAv(){let ch=false;fixed.forEach(f=>{if(/avantaj/i.test(f.n)){if(!f.d){f.d=4;ch=true}f.over=f.over||{};if(f.over['2026-12']==null||+f.over['2026-12']===385){f.over['2026-12']=406.95;ch=true}}});if(ch)save();return ch}
+function ensureAv(){let ch=false;fixed.forEach(f=>{if(/^tbi\b/i.test(f.n)&&!f.d){f.d=2;ch=true}if(/transilvania|^bt\b/i.test(f.n)){if(+f.s===541){f.s=541.21;ch=true}if(f.until==='2031-11'){f.until='2028-11';ch=true}}if(!f.d&&/transilvania|^bt\b|digi|telekom|orange/i.test(f.n)){f.d=1;ch=true}if(/avantaj/i.test(f.n)){if(!f.d){f.d=4;ch=true}f.over=f.over||{};if(f.over['2026-12']==null||+f.over['2026-12']===385){f.over['2026-12']=406.95;ch=true}}});if(ch)save();return ch}
 ensureAv();store.mig9=1;
 function fmtL(v){return (+v).toLocaleString('ro-RO',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2})}
 function pad2(n){return String(n).padStart(2,'0')}
