@@ -913,6 +913,17 @@ body:not(.haswp) #wpbg{background:radial-gradient(55% 35% at 15% 18%,#1d4ed8,tra
 .fdue{font-size:11px;color:#fbbf24;font-weight:600;margin-top:1px}.fdue.none{color:rgba(255,255,255,.45);font-weight:500}
 .msg .tk.wr{background:#fbbf24;color:#2a1a00}
 .pr-r.far{opacity:.75}.pr-r.far .pr-pay{display:none}
+/* v37 plată rapidă */
+.qp{display:inline-flex;align-items:center;gap:6px}
+.qp input{width:84px;height:34px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:14px;font-weight:600;text-align:right;padding:0 9px;outline:none}
+.qp input::placeholder{color:rgba(255,255,255,.5)}
+.qp input:focus{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12)}
+.qpk{width:34px;height:34px;border-radius:50%;border:0;background:#34d399;display:grid;place-items:center;cursor:pointer;flex:none;box-shadow:0 4px 14px -4px rgba(52,211,153,.6)}
+.qpk svg{width:18px;height:18px;fill:none;stroke:#04210f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pr-r.far .qp{opacity:.9}.pr-r.far .pr-pay{display:none}
+#fixed .fr .qp{margin-left:6px}
+#fixed .fr:has(.qp) .am{display:none}
+#fixed .fr .nm{min-width:0}
 
 </style>
 </head>
@@ -2390,24 +2401,25 @@ IC.home='<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1
 })();
 
 // ================= v35: data scadentă la costuri fixe + memento plăți =================
-if(!store.mig9){fixed.forEach(f=>{if(/avantaj/i.test(f.n)){if(!f.d)f.d=4;f.over=f.over||{};if(f.over['2026-12']==null||+f.over['2026-12']===385)f.over['2026-12']=406.95}});store.mig9=1;save()}
+function ensureAv(){let ch=false;fixed.forEach(f=>{if(/avantaj/i.test(f.n)){if(!f.d){f.d=4;ch=true}f.over=f.over||{};if(f.over['2026-12']==null||+f.over['2026-12']===385){f.over['2026-12']=406.95;ch=true}}});if(ch)save();return ch}
+ensureAv();store.mig9=1;
 function fmtL(v){return (+v).toLocaleString('ro-RO',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2})}
 function pad2(n){return String(n).padStart(2,'0')}
 function dueDate(f,mk){return mk+'-'+pad2(Math.min(+f.d,dim(mk)))}
 function dueList(){const t=today(),cm=mKey(t),out=[];
   [cm,mAdd(cm,1)].forEach(mk=>fixed.forEach((f,i)=>{if(!f.d||!fAct(f,mk))return;const a=fAmt(f,mk);if(!(a>0))return;
-    const ds=dueDate(f,mk),n=dayN(t,ds);if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>14)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
+    const ds=dueDate(f,mk),n=dayN(t,ds);if(f.paidM&&f.paidM[mk])return;if(mk===cm&&fixPaid(f).length)return;if(n<-10||n>14)return;out.push({i,f,a,ds,n,cur:mk===cm})}));
   return out.sort((x,y)=>x.n-y.n)}
 function whenTxt(n){return n<0?`Întârziat ${-n} ${-n===1?'zi':'zile'}`:n===0?'Azi':n===1?'Mâine':n===2?'Poimâine':`În ${n} zile`}
 function renderRem(){let box=$('payRem');if(!box){box=document.createElement('div');box.id='payRem';const r=$('rRecent');if(!r)return;r.parentNode.insertBefore(box,r)}
   const L=dueList();if(!L.length){box.innerHTML='';box.style.display='none';return}box.style.display='';
   const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'],tot=L.reduce((s,x)=>s+x.a,0);
   box.innerHTML=`<div class="rcard prem${L.some(x=>x.n<=2)?' urg':''}"><div class=pr-h><span class=pr-bell>${'<svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>'}</span><b>${L.some(x=>x.n<=2)?'Plăți care urmează':'Următoarele plăți'}</b><span class=num>${fmtL(tot)} lei</span></div>
-   ${L.map(x=>{const K=CATS[x.f.c]||CATS.Diverse,d=new Date(x.ds+'T12:00:00');return `<div class="pr-r${x.n>2?' far':''}"><i style="background:${tint(K.c,.28)}">${K.e}</i><div class=pr-m><b>${esc(x.f.n)}</b><span class="${x.n<0?'late':x.n===0?'today':''}">${whenTxt(x.n)} · ${ZILE[d.getDay()]}, ${d.getDate()} ${LS3[d.getMonth()]}</span></div><div class=pr-a><b class=num>${fmtL(x.a)} lei</b>${x.cur?`<button class=pr-pay data-fp="${x.i}">Plătește</button>`:''}</div></div>`}).join('')}</div>`}
+   ${L.map(x=>{const K=CATS[x.f.c]||CATS.Diverse,d=new Date(x.ds+'T12:00:00');return `<div class="pr-r${x.n>2?' far':''}"><i style="background:${tint(K.c,.28)}">${K.e}</i><div class=pr-m><b>${esc(x.f.n)}</b><span class="${x.n<0?'late':x.n===0?'today':''}">${whenTxt(x.n)} · ${ZILE[d.getDay()]}, ${d.getDate()} ${LS3[d.getMonth()]}</span></div><div class=pr-a>${qpBox(x.i,x.ds.slice(0,7),x.a)}</div></div>`}).join('')}</div>`}
 // zi scadentă în lista de costuri fixe (afișare + editare)
 function decorFixed(){const LS3=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'],cm=mKey(today());
   document.querySelectorAll('#fixed .nm[data-fe]').forEach(el=>{const f=fixed[+el.dataset.fe];if(!f||el.querySelector('.fdue'))return;const nm=mAdd(cm,1),act=fAct(f,cm),soon=!act&&f.from===nm,mk=act?cm:nm;if((!act&&!soon)||!(fAmt(f,mk)>0))return;
-    el.insertAdjacentHTML('beforeend',f.d?`<div class=fdue>${soon?'prima plată':'scadent'} ${Math.min(+f.d,dim(mk))} ${LS3[+mk.slice(5)-1]} · ${fmtL(fAmt(f,mk))} lei</div>`:`<div class="fdue none">fără dată · atinge ca s-o setezi</div>`)});
+    el.insertAdjacentHTML('beforeend',f.d?`<div class=fdue>${soon?'prima plată':'scadent'} ${Math.min(+f.d,dim(mk))} ${LS3[+mk.slice(5)-1]} · ${fmtL(fAmt(f,mk))} lei</div>`:`<div class="fdue none">fără dată (atinge numele)</div>`)});
   document.querySelectorAll('#fixed input[data-ff]').forEach(inp=>{const i=+inp.dataset.ff,row=inp.parentNode;if(row.querySelector('[data-fz]'))return;
     row.insertAdjacentHTML('beforeend',` ziua <input type=number min=1 max=31 inputmode=numeric data-fz="${i}" value="${fixed[i].d||''}" placeholder="–" style="width:52px">`)})}
 document.addEventListener('change',e=>{const z=e.target.dataset.fz;if(z===undefined)return;const v=parseInt(e.target.value,10);fixed[+z].d=v>=1&&v<=31?v:undefined;save();render()});
@@ -2415,8 +2427,25 @@ document.addEventListener('click',e=>{const b=e.target.closest('.pr-pay');if(b){
 // memento la deschidere (o dată pe zi)
 function remToast(){const L=dueList().filter(x=>x.n<=1);if(!L.length)return;const k='bani-rem-'+today();try{if(localStorage.getItem(k))return;localStorage.setItem(k,'1')}catch(_){}
   const x=L[0];setTimeout(()=>toast(`⚠ ${whenTxt(x.n)}: ${x.f.n} — ${fmtL(x.a)} lei`+(L.length>1?` (+${L.length-1})`:'')),1200)}
-const _r35=render;render=function(){_r35();try{renderRem();decorFixed()}catch(err){console.error(err)}};
+const _r35=render;render=function(){_r35();try{if(!store.avFix&&ensureAv()){}renderRem();decorFixed()}catch(err){console.error(err)}};
+// verifică versiune nouă când revii în aplicație
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&navigator.serviceWorker)navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).catch(()=>{})});
 render();remToast();
+
+// ---- v37: plată rapidă — căsuță cu suma estimată + bifă ----
+function qpBox(i,mk,est){return `<span class=qp><input data-qi="${i}" inputmode=decimal placeholder="${fmtL(est)}" aria-label="Suma plătită"><button class=qpk data-qp="${i}" data-qm="${mk}" aria-label="Marchează plătit"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg></button></span>`}
+function quickPay(i,mk,val){const f=fixed[i];if(!f)return;const est=fAmt(f,mk);let v=parseFloat(String(val||'').replace(/\s/g,'').replace(',','.'));if(!(v>0))v=est;
+  if(!(v>0)){toast('Scrie suma plătită');return}v=Math.round(v*100)/100;
+  data.push({d:today(),t:f.n,c:f.c,s:v,ts:Date.now()});f.paidM=f.paidM||{};f.paidM[mk]=1;
+  const ks=Object.keys(f.paidM).sort();if(ks.length>24)ks.slice(0,ks.length-24).forEach(k=>delete f.paidM[k]);
+  render();save();toast('✓ '+f.n+' plătit · '+fmtL(v)+' lei')}
+function decorPay(){const cm=mKey(today());document.querySelectorAll('#fixed button.st.due[data-fp]').forEach(b=>{const i=+b.dataset.fp,f=fixed[i];if(!f||!(fAmt(f,cm)>0))return;
+  b.outerHTML=f.paidM&&f.paidM[cm]?`<span class="st ok">✓ plătit</span>`:qpBox(i,cm,fAmt(f,cm))})}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-qp]');if(!b)return;e.stopPropagation();e.preventDefault();
+  const inp=b.parentNode.querySelector('[data-qi]');quickPay(+b.dataset.qp,b.dataset.qm,inp&&inp.value)},true);
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('[data-qi]')){const b=e.target.parentNode.querySelector('[data-qp]');if(b)b.click()}});
+const _r37=render;render=function(){_r37();try{decorPay()}catch(err){console.error(err)}};
+render();
 
 </script>
 </body>
